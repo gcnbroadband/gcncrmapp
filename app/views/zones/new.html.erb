@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div id="page-heading">
+    <h1><span class="glyphicon glyphicon-th-list"></span> Add new zone</h1>
+    <hr/>
+  </div>  
+    
+    <nav class="navbar navbar-default customer-navbar">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, zones_path %></li>
+          <li class="active"><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_zone_path %></li>
+        </ul>
+      </div>
+    </nav>
+    <br/>
+    <div class="col-md-7">
+	    <%= form_for @zone do |f| %>
+		    <div class="row billing-addr">
+				<div class="form-group col-md-6">
+				    <%= f.label :zone_code ,'Zone code'%>
+				    <%= f.text_field :zone_code, class: "form-control required", placeholder: "Enter zone code." %>
+				</div>
+				<div class="form-group col-md-6">
+				    <%= f.label :zone_name ,'Zone name'%>
+				    <%= f.text_field :zone_name, class: "form-control required", placeholder: "Enter zone name." %>
+				</div>
+		    	<div class="form-group col-md-6">
+		    	    <%= f.label :district ,'District'%>
+		    	    <%= f.text_field :district, class: "form-control required", placeholder: "Enter district." %>
+		    	</div>
+		    	<div class="form-group col-md-6">
+		    	    <%= f.label :state ,'State'%>
+		    	    <%= f.text_field :state, class: "form-control required", placeholder: "Enter state." %>
+		    	</div>
+		    	<div class="col-md-12">
+                	<%= f.submit class: "btn btn-raised btn-danger" %>
+            	</div>	
+
+		    </div>
+	    <% end %>
+    </div>
+</div>

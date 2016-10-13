@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+      <br/>
+      <br/>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 align="center" style="margin: 0px" class="login-session"><i class="fa fa-home" aria-hidden="true"></i> Create Employee</h3>
+        </div>
+        <div class="panel-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Enter employee name" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :emp_id, "Employee Id" %>
+                  <%= f.text_field :emp_id, class: "form-control", placeholder: "Enter employee id" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <%= f.label :zone_id, "Select Zone" %>
+                  <%= f.collection_select(:zone_id, Zone.all, :id, :zone_name, {}, {:class=>'form-control'}) %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :designation_id, "Select Designation" %>
+                  <%= f.collection_select(:designation_id, Designation.all, :id, :name, {}, {:class=>'form-control'}) %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <%= f.label :emp_official_mobile_no, "Official Mobile No" %>
+                  <%= f.text_field :emp_official_mobile_no, class: "form-control", placeholder: "Enter official mobile no" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :email, "Official email Id" %>
+                  <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%>
+                </div>
+                <div class="form-group col-md-12">
+                  <%= f.label :emp_local_addr, "Local Address" %>
+                  <%= f.text_field :emp_local_addr, class: "form-control", placeholder: "Enter local address" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <%= f.label :emp_personal_mobile_no, "Personal Mobile No" %>
+                  <%= f.text_field :emp_personal_mobile_no, class: "form-control", placeholder: "Enter personal mobile no" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :emp_personal_email, "Personal email Id" %>
+                  <%= f.email_field :emp_personal_email, class: "form-control", placeholder: "Enter personal email" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label :emp_personal_address, "Permanent Address" %>
+                  <%= f.text_field :emp_personal_address, class: "form-control", placeholder: "Enter permanent address" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <%= f.label :date_of_birth, "Date Of Birth" %>
+                  <%= f.text_field :date_of_birth, class: "form-control", placeholder: "Enter date of birth" %>
+                </div>
+                <div class="form-group col-md-3">
+                  <%= f.label :blood_group, "Blood Group" %>
+                  <%= f.text_field :blood_group, class: "form-control", placeholder: "Enter blood group" %>
+                </div>
+                <div class="form-group col-md-5">
+                  <%= f.label :emergency_cotact_no, "Emergency Contact No" %>
+                  <%= f.text_field :emergency_cotact_no, class: "form-control", placeholder: "Enter personal email" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, class: "form-control",placeholder: "Enter password" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "confirm password" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit "Create Employee", class: "btn btn-lg btn-danger btn-block" %>
+              </div>
+          <% end %>
+        </div>
+        <div class="panel-footer" style="text-align: center">
+           <b><%= render "devise/shared/links" %></b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

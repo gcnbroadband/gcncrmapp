@@ -1,0 +1,19 @@
+
+<nav class="navbar navbar-default navbar-fixed-top main-navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><b><i>GCN Broadband</i></b></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><%= link_to current_user.email %></li>
+        <li><%= link_to '<span class="glyphicon glyphicon-off"></span> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Login'.html_safe, new_user_session_path %></li>
+      <% end %>  
+    </ul>
+  </div>
+</nav>
+<br/>
+<br/>
+<br/>

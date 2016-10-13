@@ -1,0 +1,9 @@
+<nav class="navbar navbar-inverse customer-navbar">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, customers_path %></li>
+      <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
+      <li><%= link_to '<span class="glyphicon glyphicon-share"></span> Export'.html_safe, customers_export_path %></li>
+    </ul>
+  </div>
+</nav>

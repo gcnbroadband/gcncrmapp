@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div id="page-heading">
+    <h1><span class="glyphicon glyphicon-th-list"></span> List of Zones</h1>
+    <hr/>
+  </div>  
+    
+    <nav class="navbar navbar-default customer-navbar">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, zones_path %></li>
+          <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_zone_path %></li>
+          <li><a id="search-item"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filter by
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">User Id</a></li>
+                  <li><a href="#">Name</a></li>
+                  <li><a href="#">Email</a></li>
+                  <li><a href="#">Mobile no</a></li> 
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </nav>
+    <br/>
+    
+    <table class="table table-striped">
+    	<tr class="danger">
+    		<th>Zone code</th>
+    		<th>Zone name</th>
+    		<th>District</th>
+    		<th>State</th>
+    	</tr>
+    	<% @zone.each do |zone| %>
+    	<tr>
+    		<td><%= zone.zone_code %></td>
+    		<td><%= zone.zone_name %></td>
+    		<td><%= zone.state %></td>
+    		<td><%= zone.district %></td>
+    	</tr>
+    	<% end %>
+    </table>
+     
+</div>
