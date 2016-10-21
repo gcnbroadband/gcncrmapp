@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4 zone-form-block">
+				<div class="row billing-addr">
+					<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-complaint-img" ), root_path, :alt=>"logo"  %>
+				</div>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			<%= form_for @customer, method: :put, url: active_customer_path do |f| %>
+				<div class="row billing-addr">
+					<div class="form-group col-md-12">
+						<%= f.label :cust_id, "User Id" %>
+						<%= f.text_field :cust_id, class: "form-control", placeholder: "Enter user id" %>
+					</div>
+					<div class="col-md-12">
+						<%= f.submit 'Activate customer', class: "btn btn-raised btn-danger btn-block complaint_btn" %> 
+					</div>
+					<div class="col-md-12" align="center">
+						<br/>
+						<%=link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back'.html_safe, root_path %>
+					</div>
+					
+				</div>	
+			<% end %>
+		</div>
+	</div>
+</div>

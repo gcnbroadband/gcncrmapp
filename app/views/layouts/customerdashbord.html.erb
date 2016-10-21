@@ -9,10 +9,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1.0" >
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
-  <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet" type='text/css'>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet" type='text/css'>
+
+
 </head>
-<body class="home" style="background-color: #F5F5F5">
+<body>
+	
 	<div class="container alert-box">
 		<% flash.each do |name,msg| %>
 			<div class="container animated bounceInDown">
@@ -27,6 +31,26 @@
 			</div>
 		<% end %>
 	</div>
-	<%= yield %>
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-lg-2 col-md-2 col-sm-2 side-bar">
+				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
+				<ul class="nav sidebar-nav">
+				  <li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Primary Details'.html_safe, customer_path(@customer) %></li>
+				  <li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Payment Details'.html_safe, payment_detail_customer_path(@customer) %></li>
+				  <li><%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renewals'.html_safe, myrenewal_customer_path(@customer) %></li>
+				  <li><%=link_to '<i class="fa fa-bell-o fa-lg" aria-hidden="true"></i> Take Complaint'.html_safe, new_complaint_path %></li>
+				  <li><%=link_to '<i class="fa fa-cogs fa-lg" aria-hidden="true"></i> See Complaints'.html_safe, complaint_list_customer_path(@customer) %></li>
+
+				</ul>
+			</div>
+			<div class="col-sm-10 col-lg-10 col-md-10 side-bar-contet" style="float:right">
+				<%= render 'layouts/navbarcustomer' %>	
+				<%= yield %>
+		  	</div>
+		</div>
+		
+	</div>
 </body>
 </html>

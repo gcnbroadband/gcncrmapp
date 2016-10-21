@@ -31,39 +31,66 @@ function sideBarHeight(){
 // to hide the timpicker once clicked outside the time picker block 
 
 function plansList(){
-	$("#customer_net_plan").focus(function(){
-		 // $("html, body").animate({ scrollTop:  }, "fast");
-		$("#plan-list").fadeIn();
-		$("#plan-list li").each(function(){
-			$(this).click(function(){
-				$("#customer_net_plan").val($(this).text());
-				$("#plan-list").fadeOut('fast');
+
+	$( "#renew_plan_" ).change(function() {
+		if ($(this).val()=="") {
+			$("#renew_amount").val("");
+		}
+		else
+		{
+			var planSelected = $(this).val();
+			var tax = (planSelected*15)/100;
+			var monthlyPay = parseInt(planSelected) + parseInt(tax);
+			$("#renew_amount").val(monthlyPay);
+		}
+		
+	});
+
+	$( "#customer_net_plan" ).change(function() {
+		if ($(this).val()=="") {
+			$("#customer_payment_detail_attributes_plan_tax").val("");
+			$("#customer_payment_detail_attributes_plan_cost").val("");
+			$("#customer_payment_detail_attributes_monthly_payment_cost").val("");
+		}
+		else
+		{
+			var planSelected = $(this).val();
+			var tax = (planSelected*15)/100;
+			var monthlyPay = parseInt(planSelected) + parseInt(tax);
+			
+			var planCharge = $("#customer_payment_detail_attributes_plan_tax").val(tax);
+			// console.log(planCharge)
+			var planTax = $("#customer_payment_detail_attributes_plan_cost").val(planSelected);
+			// console.log(planTax)
+			$("#customer_payment_detail_attributes_monthly_payment_cost").val(monthlyPay);
+		}
+		
+	});
 
 
-				var planSelected = $(this).val();
-				var tax = (planSelected*15)/100;
-				var monthlyPay = planSelected + tax;
+
+	// $("#customer_net_plan").focus(function(){
+	// 	 // $("html, body").animate({ scrollTop:  }, "fast");
+	// 	$("#plan-list").fadeIn();
+	// 	$("#plan-list li").each(function(){
+	// 		$(this).click(function(){
+	// 			$("#customer_net_plan").val($(this).text());
+	// 			$("#plan-list").fadeOut('fast');
+	// 			var planSelected = $(this).val();
+	// 			var tax = (planSelected*15)/100;
+	// 			var monthlyPay = planSelected + tax;
 				
-				var planCharge = $("#customer_payment_detail_attributes_plan_tax").val(tax);
-				// console.log(planCharge)
-				var planTax = $("#customer_payment_detail_attributes_plan_cost").val(planSelected);
-				// console.log(planTax)
-				$("#customer_payment_detail_attributes_monthly_payment_cost").val(monthlyPay);
-			});
-		});
+	// 			var planCharge = $("#customer_payment_detail_attributes_plan_tax").val(tax);
+	// 			// console.log(planCharge)
+	// 			var planTax = $("#customer_payment_detail_attributes_plan_cost").val(planSelected);
+	// 			// console.log(planTax)
+	// 			$("#customer_payment_detail_attributes_monthly_payment_cost").val(monthlyPay);
+	// 		});
+	// 	});
 
-	});
+	// });
 
-	$(document).mouseup(function (e)
-	{
-	    var container = $(".plans-input-block");
 
-	    if (!container.is(e.target) // if the target of the click isn't the container...
-	        && container.has(e.target).length === 0) // ... nor a descendant of the container
-	    {
-	        $("#plan-list").fadeOut('fast');
-	    }
-	});
 }
 
 
@@ -104,11 +131,22 @@ function addressCheckBox() {
 	 	var noOfMonth = $("#customer_payment_detail_attributes_no_of_months_paid").val();
 	 	var installationCharge = $("#customer_payment_detail_attributes_installation_charge").val();
 	 	var otherCharge = $("#customer_payment_detail_attributes_company_material_cost").val();
-         var planvalue = (monthlyPlanCost*noOfMonth)
+         var planvalue = parseInt(monthlyPlanCost*noOfMonth)
          var otherTotalCharge = parseInt(installationCharge) + parseInt(otherCharge);
 	 	var totalPay = planvalue + otherTotalCharge;
-	 	$("#total-amount-div").fadeIn();
-	 	$("#customer_payment_detail_attributes_total_amount").val(totalPay);
+	 	if (isNaN(totalPay)) {
+	 		$("#total-amount-div").hide();
+	 		$("#calc-error").show();
+	 		$("#bill_book, #submit-btn").hide();
+	 	}
+	 	else
+	 	{
+	 		$("#total-amount-div").fadeIn();
+	 		$("#customer_payment_detail_attributes_total_amount").val(totalPay);
+	 		
+	 		$("#bill_book, #submit-btn").fadeIn();
+	 		$("#calc-error").hide();
+	 	}
  	});
  }
  
@@ -196,24 +234,24 @@ function calculateTotalAmount(){
 	    });
 }
 
-function customTab() {
-	$("#tab-list-item li").each(function(){
-		$(this).click(function(){
-			$("#tab-list-item li").removeClass('active');
-			$(this).addClass('active');
-		});
-	});
-	$("#row-two").hide();
-	$("#row-three").hide();
-	$("#tab-list-item li:first-child").click(function(){
-		$("#row-two").hide();
-		$("#row-one").fadeIn();
-	});
-	$("#tab-list-item li:nth-child(2)").click(function(){
-		$("#row-two").fadeIn();
-		$("#row-one").hide();
-	});
-}
+// function customTab() {
+// 	$("#tab-list-item li").each(function(){
+// 		$(this).click(function(){
+// 			$("#tab-list-item li").removeClass('active');
+// 			$(this).addClass('active');
+// 		});
+// 	});
+// 	// $("#row-two").hide();
+// 	$("#row-three").hide();
+// 	$("#tab-list-item li:first-child").click(function(){
+// 		$("#row-two").hide();
+// 		$("#row-one").fadeIn();
+// 	});
+// 	$("#tab-list-item li:nth-child(2)").click(function(){
+// 		$("#row-two").fadeIn();
+// 		$("#row-one").hide();
+// 	});
+// }
 
 function datePicker(){
 	$('#customer_date').datetimepicker({
@@ -229,6 +267,9 @@ function datePicker(){
 		format: 'DD-MM-YYYY'
 	});
 	$('#user_date_of_birth').datetimepicker({
+		format: 'DD-MM-YYYY'
+	});
+	$('#renew_date').datetimepicker({
 		format: 'DD-MM-YYYY'
 	});
 	$("#customer-seach-box").hide();
@@ -256,6 +297,7 @@ function datePicker(){
  }
 
 $(document).ready(function(){
+	$("#bill_book,#submit-btn").hide();
 	$.material.init();
 	sideBarHeight();
 	plansList()
@@ -280,13 +322,15 @@ $(document).on('turbolinks:load', function(){
 	tableHeight()
 	calculateTotalAmount()
 	$("#navigation").height($(window).height());
-	customTab()
+	// customTab()
 	datePicker()
 	$("#new_bill_book").validate();
 	$("#new_customer").validate();
 	$("#new_employee_detail").validate();
+	$("#renew-form").validate();
 	$("#new_gcn_plan").validate();
 	currentPage()
+	$("#bill_book, #submit-btn").hide();
 });
 
 

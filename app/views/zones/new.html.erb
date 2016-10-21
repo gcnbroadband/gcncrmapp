@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div id="page-heading">
-    <h1><span class="glyphicon glyphicon-th-list"></span> Add new zone</h1>
+    <h1><span class="glyphicon glyphicon-plus"></span> Add new zone</h1>
     <hr/>
   </div>  
     
@@ -12,8 +12,7 @@
         </ul>
       </div>
     </nav>
-    <br/>
-    <div class="col-md-7">
+    <div class="col-md-7 zone-form-block">
 	    <%= form_for @zone do |f| %>
 		    <div class="row billing-addr">
 				<div class="form-group col-md-6">
@@ -33,7 +32,7 @@
 		    	    <%= f.text_field :state, class: "form-control required", placeholder: "Enter state." %>
 		    	</div>
 		    	<div class="col-md-12">
-                	<%= f.submit class: "btn btn-raised btn-danger" %>
+                	<%= f.submit class: "btn btn-raised btn-danger complaint_btn" %>
             	</div>	
 
 		    </div>

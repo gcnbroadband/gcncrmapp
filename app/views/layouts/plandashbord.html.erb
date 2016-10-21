@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gcnintraapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+  <meta name="viewport" content="width=device-width initial-scale=1.0" >
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet" type='text/css'>
+
+
+</head>
+<body>
+	
+	<div class="container alert-box">
+		<% flash.each do |name,msg| %>
+			<div class="container animated bounceInDown">
+				<div class="row">
+					<div class="col-md-offset-3 col-md-6">
+						<div class="alert alert-dismissible alert-<%= "#{name}" %>">
+						  <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove-circle"></span></button>
+						  <b><%= msg %></b>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-lg-2 col-md-2 col-sm-2 side-bar">
+				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
+				<ul class="nav sidebar-nav">
+				  <li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Plan List'.html_safe, plans_path %></li>
+				  <li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Create New Plan'.html_safe, new_plan_path %></li>
+
+				</ul>
+			</div>
+			<div class="col-sm-10 col-lg-10 col-md-10 side-bar-contet" style="float:right">
+				<%= render 'layouts/navbar' %>	
+				<%= yield %>
+		  	</div>
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top main-navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><b><i>GCN Broadband</i></b></a>
+      <b><i><%= link_to 'GCN Broadband', root_path, class: "navbar-brand" %></i></b>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
@@ -14,6 +14,3 @@
     </ul>
   </div>
 </nav>
-<br/>
-<br/>
-<br/>

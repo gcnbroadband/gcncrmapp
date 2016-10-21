@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div id="page-heading">
+    <h1><span class="glyphicon glyphicon-th-list"></span> List of Plans</h1>
+    <hr/>
+  </div>  
+    
+    <nav class="navbar navbar-default customer-navbar">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, plans_path %></li>
+          <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_plan_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filter by
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">User Id</a></li>
+                  <li><a href="#">Name</a></li>
+                  <li><a href="#">Email</a></li>
+                  <li><a href="#">Mobile no</a></li> 
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <tr class="danger">
+            <th>No</th>
+            <th>Plan rate</th>
+            <th>Plan pattern</th>
+          </tr>
+          <% @plan.each do |plan| %>
+          <tr>
+            <td><%= plan.id %></td>
+            <td><i class="fa fa-inr" aria-hidden="true"></i> <%= plan.plan_value %></td>
+            <td><i class="fa fa-tag" aria-hidden="true"></i> <%= plan.plan_pattern %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+     
+</div>

@@ -1,0 +1,45 @@
+<div class="container renew-container">
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4 zone-form-block">
+			<div class="row billing-addr">
+				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-complaint-img" ), root_path, :alt=>"logo"  %>
+			</div>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			<%= form_tag({controller: "renewals", action: "create"}, method: "post", :id => "renew-form") do %>
+				<div class="row billing-addr">
+					<div class="form-group col-md-12 icon-view">
+						<%= label_tag(:custom_id, "User Id") %>
+						<%= text_field_tag :custom_id, params[:customer_id], placeholder: 'Enter user id', class: 'form-control required' %>
+						<i class="fa fa-user fa-lg" aria-hidden="true"></i>
+					</div>
+					<div class="form-group col-md-12 icon-view">
+						<%= label_tag(:renew_date, "Renew Date") %>
+						<%= text_field_tag :renew_date, params[:renew_date], placeholder: 'Enter complaint subject', class: 'form-control required' %>
+						<i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+					</div>
+					<div class="form-group col-md-12 icon-view">
+						<%= label_tag(:renew_plan, "Renew Plan") %>
+					
+						<%= collection_select(:renew_plan, params[:renew_plan], Plan.all, :plan_value, :plan_pattern,{prompt: 'Select plan'},{class: "form-control required"}) %>
+						<%#= collection_select :renew_plan, :id, Plan.all, :plan_value, :plan_pattern %>
+					</div>
+					<div class="form-group col-md-12 icon-view">
+						<%= label_tag(:renew_amount, "Renew Amount") %> <small>(15% tax included)</small>
+						<%= text_field_tag :renew_amount, params[:renew_amount], placeholder: 'Enter renewal amount', class: 'form-control required' %>
+						<i class="fa fa-inr fa-lg" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-12">
+						<%= submit_tag("Renew", class: "btn btn-raised btn-danger btn-block complaint_btn") %>
+					</div>
+					<div class="col-md-12" align="center">
+						<br/>
+						<%=link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back'.html_safe, root_path %>
+					</div>
+				</div>	
+			<% end %>
+		</div>
+	</div>
+</div>

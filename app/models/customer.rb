@@ -7,22 +7,29 @@ class Customer < ActiveRecord::Base
   belongs_to :user
   has_one :payment_detail
   has_many :bill_books
+  has_many :complaints
+  has_many :renewals
 
   accepts_nested_attributes_for :bill_books
   accepts_nested_attributes_for :payment_detail
 
 
-
+  def self.find_by_userid(userid)
+    where(cust_id: userid).first
+  end
+  
   def self.search(param)
     return Customer.none if param.blank?
-
     param.strip!
     param.downcase!
 
-    (name_matches(param) + email_matches(param) + mobile_no_matches(param) +telephone_no_matches(param)).uniq
+    (cust_id_matches(param) + name_matches(param) + email_matches(param) + mobile_no_matches(param) +telephone_no_matches(param)).uniq
   end
 
-
+  def self.cust_id_matches(param)
+    matches('cust_id', param)
+  end
+  
   def self.name_matches(param)
     matches('name', param)
   end

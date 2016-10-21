@@ -1,0 +1,8 @@
+
+
+<%= render 'complaints/form' %>
+
+<% @complaints.each do |c| %>
+<h4><%= c.complaint_sub%></h4>
+<p><%= c.complaint_body%></p>
+<% end %>

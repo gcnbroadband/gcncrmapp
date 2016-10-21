@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default main-navbar-customer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"><h5 class="customer-main-detail"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <span><%= @customer.name.capitalize %></span></h5></div>
+      <div class="col-md-3"><h5 class="customer-main-detail"><i class="fa fa-play fa-lg" aria-hidden="true"></i> <span>
+      	<% if @customer.cust_id.nil? %>
+      		<%= link_to 'Activate',activate_customer_path(@customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
+      	<% else %>
+      		<%= @customer.cust_id %>
+      	<% end %>
+      </span></h5></div>
+      <div class="col-md-3"><h5 class="customer-main-detail"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> <span><%= @customer.installation_mobile_no %></span></h5></div>
+      <div class="col-md-3"><h5 class="customer-main-detail"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> <span><%= @customer.installation_email %></span></h5></div>
+    </div>
+    
+  </div>
+</nav>

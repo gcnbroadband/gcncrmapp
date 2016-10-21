@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013093859) do
+ActiveRecord::Schema.define(version: 20161020131707) do
 
   create_table "bill_books", force: true do |t|
     t.integer  "customer_id"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20161013093859) do
   end
 
   add_index "bill_books", ["customer_id"], name: "index_bill_books_on_customer_id", using: :btree
+
+  create_table "complaints", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "complaint_sub"
+    t.text     "complaint_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "complaints", ["customer_id"], name: "index_complaints_on_customer_id", using: :btree
+  add_index "complaints", ["user_id"], name: "index_complaints_on_user_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.integer  "zone_id"
@@ -53,6 +65,7 @@ ActiveRecord::Schema.define(version: 20161013093859) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "cust_id"
   end
 
   add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
@@ -99,6 +112,27 @@ ActiveRecord::Schema.define(version: 20161013093859) do
 
   add_index "payment_details", ["customer_id"], name: "index_payment_details_on_customer_id", using: :btree
 
+  create_table "plans", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "plan_value"
+    t.string   "plan_pattern"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plans", ["customer_id"], name: "index_plans_on_customer_id", using: :btree
+
+  create_table "renewals", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "renew_date"
+    t.string   "renew_plan"
+    t.string   "renew_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "renewals", ["customer_id"], name: "index_renewals_on_customer_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -124,11 +158,13 @@ ActiveRecord::Schema.define(version: 20161013093859) do
     t.text     "emp_personal_address"
     t.string   "emergency_cotact_no"
     t.integer  "designation_id"
+    t.string   "username"
   end
 
   add_index "users", ["designation_id"], name: "index_users_on_designation_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
   add_index "users", ["zone_id"], name: "index_users_on_zone_id", using: :btree
 
   create_table "zones", force: true do |t|

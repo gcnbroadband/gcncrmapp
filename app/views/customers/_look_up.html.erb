@@ -2,7 +2,7 @@
 	<div class="col-md-12"  id="customer-seach-box">
 		<div class="col-md-offset-3 col-md-6 custom-well-lookup">
 			<%=form_tag search_customers_path, remote: true, method: :get, id: 'look-up-friend-form' do %>
-			<div class="form-group look-up-friend col-md-7">
+			<div class="form-group look-up-friend look-up-text-field col-md-7">
 				<%= text_field_tag :search_params, params[:search_params], placeholder: 'Name, user id, email, mobile number', class: 'form-control input-lg', autofocus: true %>
 			</div>
 			<div class="form-group look-up-friend col-md-5">
@@ -28,17 +28,17 @@
 			  <table class="table table-striped customer-list-table">
 			    <thead>
 			      <tr class="danger">
-			      	<th>Application Id</th>
+			      	<th>Sl.no</th>
 			      	<th>Zone</th>
+			      	<th>User Id</th>
 			        <th>Date</th>
 			        <th>name</th>
 			        <th>Mobile no</th>
 			        <th>Email</th>
 			        <th>Telephone no</th>
 			        <th>Nationality</th>
-			        <th>Plan</th>
-			        <th>Total amount</th>
-			        <th>Pending amount</th>
+			        <!-- <th>Plan</th> -->
+			        <th></th>
 			        <th></th>
 			      </tr>
 			    </thead>
@@ -47,22 +47,25 @@
 
 			        <tr>
 			          <td><%= customer.id %></td>
-			          <td><%= customer.zone.zone_name %></td>
-			          <td><%= customer.date %></td>
+			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
+			          <td>
+			          	<% if customer.cust_id.nil?%>
+			          		<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
+			          	<% else %>
+			          		<strong><i class="fa fa-user" aria-hidden="true"></i> <%= customer.cust_id %></strong>
+			          	<% end %>
+			          </td>
+			          <td><i class="fa fa-calendar" aria-hidden="true"></i> <%= customer.date %></td>
 			          <td><%= customer.name %></td>
-			          <td><%= customer.billing_mobile_no %></td>
-			          <td><%= customer.billing_email %></td>
+			          <td><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> <%= customer.billing_mobile_no %></td>
+			          <td><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= customer.billing_email %></td>
 			          <td><%= customer.billing_telephone_no %></td>
 			          <td><%= customer.nationality %></td>
-			          <td><%= customer.net_plan %></td>
-			          <td><%= customer.payment_detail.total_amount.to_i %></td>
-			          <% customer.bill_books.each do |bill| %>
-			            <% if bill == customer.bill_books.last%>
-			              <td><%= bill.pending_bill.to_i%></td>
-			            <% end %>
-			      	  <% end %>
+			          <!-- <td><%#= customer.net_plan %></td> -->
+			
 			          
 			          <td><%=link_to 'See details', customer_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
+			          <td><%=link_to 'See complaints', complaint_list_customer_path(customer), class: "btn btn-xs btn-info btn-raised cust-see-detail-btn" %></td>
 			        </tr>
 			      <% end %>
 			    </tbody>
