@@ -127,10 +127,11 @@
     <% @customer.bill_books.each do |bill| %>                                
         <% if bill == @customer.bill_books.last %>
           <% if bill.pending_bill.to_i > 0 %>
-            <a data-toggle="modal" class="btn btn-md btn-success" href="#add_project">Add new bill</a>                            
+                                    
           <% end %>
         <% end %>
-    <% end %>  
+    <% end %> 
+     <a data-toggle="modal" class="btn btn-md btn-success" href="#add_project">Add new bill</a>    
   </div>
   <div id="add_project" class="modal fade" role="dialog">
       <div class="modal-dialog modal-md">
