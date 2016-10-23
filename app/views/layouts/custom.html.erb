@@ -34,7 +34,7 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-2 col-md-2 col-sm-2 side-bar">
+			<div class="col-lg-2 col-md-2 col-sm-2 side-bar hidden-xs">
 				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
 				<ul class="nav sidebar-nav">
 				  <li class="active"><%=link_to '<i class="fa fa-users" aria-hidden="true"></i> Customers'.html_safe, root_path %></li>
@@ -46,7 +46,7 @@
 
 				</ul>
 			</div>
-			<div class="col-sm-10 col-lg-10 col-md-10 side-bar-contet" style="float:right">
+			<div class="col-sm-10 col-lg-10 col-md-10 col-xs-12 side-bar-contet" style="float:right">
 				<%= render 'layouts/navbar' %>	
 				<%= yield %>
 		  	</div>

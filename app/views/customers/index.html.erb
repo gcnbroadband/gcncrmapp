@@ -8,10 +8,12 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, root_path %></li>
-          <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
+          <% if current_user.designation.name == "Marketing Executive" %>
+            <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
+          <% end %>
           <li><a id="search-item"><span class="glyphicon glyphicon-search"></span> Search</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right hidden-xs">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filter by
                 <span class="caret"></span></a>

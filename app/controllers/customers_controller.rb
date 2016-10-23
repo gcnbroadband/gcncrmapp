@@ -41,9 +41,21 @@ class CustomersController < ApplicationController
     @complaints = Complaint.all
   end
   def new
-    @customer = Customer.new
-    @customer.build_payment_detail
-    @customer.bill_books.build
+    puts "*********************************************************"
+    puts "*********************************************************"
+    puts "*********************************************************"
+    puts "#{current_user.designation.name}" 
+    puts "*********************************************************"
+    puts "*********************************************************"
+    print "*********************************************************"
+    if current_user.designation.name == "Marketing Executive" 
+      @customer = Customer.new
+      @customer.build_payment_detail
+      @customer.bill_books.build
+    else
+      flash[:danger] = "Access Denied"
+      redirect_to root_path
+    end
   end
 
   def show
