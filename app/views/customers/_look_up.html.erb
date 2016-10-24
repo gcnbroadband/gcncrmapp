@@ -50,7 +50,11 @@
 			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
 			          <td>
 			          	<% if customer.cust_id.nil?%>
-			          		<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
+			          		<% if current_user.designation.name == "Telecaller" %>
+			          			<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
+			          		<% else %>
+			          			<span style="color:red"><strong>Inactive</strong></span>
+			          		<% end %>	
 			          	<% else %>
 			          		<strong><i class="fa fa-user" aria-hidden="true"></i> <%= customer.cust_id %></strong>
 			          	<% end %>

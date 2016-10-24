@@ -6,6 +6,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
+        <li><%= link_to current_user.designation.name %></li>
         <li><%= link_to current_user.email %></li>
         <li><%= link_to '<span class="glyphicon glyphicon-off"></span> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
       <% else %>
