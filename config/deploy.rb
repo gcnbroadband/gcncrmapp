@@ -7,9 +7,9 @@ set :repo_url, 'git@github.com:gcnbroadband/gcncrmapp.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/gcn/gcncrmapp'
-# set :deploy_to, '/var/www/my_app_name'
 
+# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/home/gcn/gcncrmapp'
 # Default value for :scm is :git
 # set :scm, :git
 
