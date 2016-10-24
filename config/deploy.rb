@@ -3,6 +3,7 @@ lock '3.6.1'
 
 set :application, 'gcncrmapp'
 set :repo_url, 'git@github.com:gcnbroadband/gcncrmapp.git'
+set :passenger_restart_with_touch, true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

@@ -34,5 +34,5 @@ group :development do
 	gem 'capistrano', '~> 3.6', '>= 3.6.1'
 	gem 'capistrano-rails', '~> 1.1', '>= 1.1.8'
 	gem 'capistrano-rbenv', '~> 2.0', '>= 2.0.4'
-	# gem 'capistrano-passenger', '~> 0.2.0'
+	gem 'capistrano-passenger', '~> 0.2.0'
 end
