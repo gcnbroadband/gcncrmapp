@@ -1,6 +1,9 @@
 <% if @customer.complaints.count > 0%>
 <div class="row mycomplaints">
-	<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-xs-12 col-sm-12"><h4 class="complaints-all"><span class="glyphicon glyphicon-user"></span> <%= @customer.cust_id %></h4>
+	<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-xs-12 col-sm-12">
+		<h4 class="complaints-all"><span class="glyphicon glyphicon-user"></span>
+		 	<%= @customer.cust_id %>
+		</h4>
 	<hr/></div>
 </div>
 <% @customer.complaints.each do |complaint| %>

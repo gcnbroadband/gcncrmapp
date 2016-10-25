@@ -38,7 +38,9 @@
 				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
 				<ul class="nav sidebar-nav">
 				  <li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Plan List'.html_safe, plans_path %></li>
-				  <li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Create New Plan'.html_safe, new_plan_path %></li>
+				  <% if current_user.gcn_admin == true %>
+				  	<li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Create New Plan'.html_safe, new_plan_path %></li>
+				  <% end %>
 
 				</ul>
 			</div>

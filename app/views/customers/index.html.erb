@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, root_path %></li>
-          <% if current_user.designation.name == "Marketing Executive" %>
+          <% if (current_user.marketing_executive == true )|| (current_user.gcn_admin == true)%>
             <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
           <% end %>
           <li><a id="search-item"><span class="glyphicon glyphicon-search"></span> Search</a></li>
@@ -28,5 +28,4 @@
       </div>
     </nav>
     <%= render 'look_up' %>
-     
 </div>

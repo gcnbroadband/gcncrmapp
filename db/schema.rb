@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023173221) do
+ActiveRecord::Schema.define(version: 20161025102315) do
 
   create_table "bill_books", force: true do |t|
     t.integer  "customer_id"
@@ -160,6 +160,10 @@ ActiveRecord::Schema.define(version: 20161023173221) do
     t.integer  "designation_id"
     t.string   "username"
     t.boolean  "gcn_admin",              default: false
+    t.boolean  "marketing_executive",    default: false
+    t.boolean  "tele_caller",            default: false
+    t.boolean  "technician",             default: false
+    t.boolean  "team_lead",              default: false
   end
 
   add_index "users", ["designation_id"], name: "index_users_on_designation_id", using: :btree

@@ -8,7 +8,9 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, zones_path %></li>
-          <li class="active"><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_zone_path %></li>
+          <% if current_user.gcn_admin == true %>
+          	<li class="active"><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_zone_path %></li>
+          <% end %>
         </ul>
       </div>
     </nav>

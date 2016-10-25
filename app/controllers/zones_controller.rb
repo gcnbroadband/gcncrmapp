@@ -5,7 +5,11 @@ class ZonesController < ApplicationController
   end
 
   def new
-  	@zone = Zone.new
+    if current_user.gcn_admin == true
+  	   @zone = Zone.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create

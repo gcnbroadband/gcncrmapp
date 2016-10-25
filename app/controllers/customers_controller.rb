@@ -11,8 +11,13 @@ class CustomersController < ApplicationController
   end
 
   def activate 
-    @customer = Customer.find(params[:id])
-    render layout: "compliant"
+    if (current_user.gcn_admin == true) || (current_user.tele_caller == true)
+      @customer = Customer.find(params[:id])
+      render layout: "compliant"
+    else
+      redirect_to root_path
+      flash[:danger] = "Access Denied"
+    end
   end
   def myrenewal 
     @customer = Customer.find(params[:id])
@@ -34,21 +39,20 @@ class CustomersController < ApplicationController
     render layout: "compliant"
   end
   def index
-    @customer = Customer.all
+    if current_user.marketing_executive == true
+      @customer = current_user.customers
+    elsif current_user.gcn_admin == true 
+      @customer = Customer.all
+    elsif (current_user.team_lead == true ) || (current_user.tele_caller == true) || (current_user.technician == true)
+      @customer = Customer.find_by_zone_id(current_user.zone_id)
+    end
   end
   def complain
     @customer = Customer.find(params[:id])
     @complaints = Complaint.all
   end
   def new
-    puts "*********************************************************"
-    puts "*********************************************************"
-    puts "*********************************************************"
-    puts "#{current_user.designation.name}" 
-    puts "*********************************************************"
-    puts "*********************************************************"
-    print "*********************************************************"
-    if current_user.designation.name == "Marketing Executive" 
+    if (current_user.gcn_admin == true) || (current_user.marketing_executive == true)
       @customer = Customer.new
       @customer.build_payment_detail
       @customer.bill_books.build

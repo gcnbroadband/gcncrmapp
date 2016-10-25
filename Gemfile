@@ -8,6 +8,7 @@ gem 'bootstrap-material-design'
 gem 'sass-rails', '~> 5.0'
 gem "font-awesome-rails"
 gem 'devise'
+gem 'rails_admin', '~> 1.0'
 gem 'carrierwave'
 gem "mini_magick"
 gem 'uglifier', '>= 1.3.0'

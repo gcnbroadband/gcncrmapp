@@ -44,13 +44,12 @@
 			    </thead>
 			    <tbody>
 			      <% @customer.each do |customer| %>
-
 			        <tr>
 			          <td><%= customer.id %></td>
 			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
 			          <td>
-			          	<% if customer.cust_id.nil?%>
-			          		<% if current_user.designation.name == "Telecaller" %>
+			          	<% if customer.cust_id == ""%>
+			          		<% if (current_user.tele_caller == true) || (current_user.gcn_admin == true)%>
 			          			<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
 			          		<% else %>
 			          			<span style="color:red"><strong>Inactive</strong></span>
@@ -66,8 +65,6 @@
 			          <td><%= customer.billing_telephone_no %></td>
 			          <td><%= customer.nationality %></td>
 			          <!-- <td><%#= customer.net_plan %></td> -->
-			
-			          
 			          <td><%=link_to 'See details', customer_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
 			          <td><%=link_to 'See complaints', complaint_list_customer_path(customer), class: "btn btn-xs btn-info btn-raised cust-see-detail-btn" %></td>
 			        </tr>

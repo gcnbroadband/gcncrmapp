@@ -296,6 +296,18 @@ function datePicker(){
  	
  }
 
+function roles() {
+	$(".roles").each(function(){
+		$(this).click(function(){
+			// 	$(".roles").removeAttr('checked');
+			// 	$(this).attr('checked','checked')
+			$(this).attr('checked','checked');
+			$(".roles").not(this).removeAttr('checked')
+			
+		});
+	});
+}
+
 $(document).ready(function(){
 	$("#bill_book,#submit-btn").hide();
 	$.material.init();
@@ -331,6 +343,7 @@ $(document).on('turbolinks:load', function(){
 	$("#new_gcn_plan").validate();
 	currentPage()
 	$("#bill_book, #submit-btn").hide();
+	roles()
 });
 
 
