@@ -11,9 +11,9 @@
           <% if current_user.gcn_admin == true %>
             <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_plan_path %></li>
           <% end %>
-          <li><%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> Back'.html_safe, root_path %></li>
+          <li class="hidden-xs"><%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> Back'.html_safe, root_path %></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right hidden-xs">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filter by
                 <span class="caret"></span></a>

@@ -310,6 +310,7 @@ function roles() {
 function sideBarToggle() {
 	$('#menu-toggle, #menu-toggle-complaint').click(function(){
 		// alert("jjjjjjjjjjj")
+	  $("#mob-overlay, #mob-overlay-complaint").fadeIn();
 	  $('#side-bar-toggle,#side-bar-toggle-complaint').addClass('open');
 	  if($('#side-bar-toggle, #side-bar-toggle-complaint').hasClass('open')){
 	      $(document).mouseup(function (e)
@@ -320,6 +321,7 @@ function sideBarToggle() {
 	              && containernav.has(e.target).length === 0) // ... nor a descendant of the container
 	          {
 	              containernav.removeClass('open');
+	              $("#mob-overlay, #mob-overlay-complaint").fadeOut();
 	          }
 	      });
 	  }
