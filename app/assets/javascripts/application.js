@@ -307,13 +307,31 @@ function roles() {
 		});
 	});
 }
+function sideBarToggle() {
+	$('#menu-toggle, #menu-toggle-complaint').click(function(){
+		// alert("jjjjjjjjjjj")
+	  $('#side-bar-toggle,#side-bar-toggle-complaint').addClass('open');
+	  if($('#side-bar-toggle, #side-bar-toggle-complaint').hasClass('open')){
+	      $(document).mouseup(function (e)
+	      {
+	          var containernav = $("#side-bar-toggle, #side-bar-toggle-complaint");
 
+	          if (!containernav.is(e.target) // if the target of the click isn't the container...
+	              && containernav.has(e.target).length === 0) // ... nor a descendant of the container
+	          {
+	              containernav.removeClass('open');
+	          }
+	      });
+	  }
+	});
+}
 $(document).ready(function(){
 	$("#bill_book,#submit-btn").hide();
 	$.material.init();
 	sideBarHeight();
 	plansList()
 	currentPage()
+	sideBarToggle()
 	// addressCheckBox()
 	
 	// alert(finalTableHeight)
@@ -321,7 +339,6 @@ $(document).ready(function(){
        $("#navigation").toggleClass("hidden-xs");
    	});
 	$("#navigation").height($(window).height());
-
 
 });
 
@@ -344,6 +361,7 @@ $(document).on('turbolinks:load', function(){
 	currentPage()
 	$("#bill_book, #submit-btn").hide();
 	roles()
+	sideBarToggle()
 });
 
 

@@ -997,3 +997,79 @@ p.list-group-item-text {
 .role-block {
     margin-bottom: 10px !important;
 }
+.open {
+    display: block !important;
+    left: 0 !important;
+    width: 225px !important;
+    box-shadow: 0px 0px 10px black;
+}
+#side-bar-toggle, #side-bar-toggle-complaint {
+    transition: all 0.3s ease;
+    position: fixed;
+    width: 220px;
+    top: 0;
+    left: -220px;
+    background: #f8f8f8;
+    height: 100%;
+    z-index: 9999999;
+    padding: 15px 0px;
+    overflow-x: scroll;
+}
+.logo-mobile-img {
+    width: 90%;
+    margin: 0 auto;
+}
+@media (max-width:767px) {
+    .wrapper {
+        margin-top: 50px;
+    }
+    .navbar-nav {
+        margin: 0px;
+        li {
+            display: inline-block;
+        }
+    }
+    .mob-header {
+        background: #e74c3c;
+        padding: 8px 15px;
+        position: fixed;
+        left: 0;
+        z-index: 10;
+        right: 0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+        .mob-header-text{
+            margin: 0;
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 30px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif !important;
+
+        }
+        i.fa-bars {
+            line-height: 30px;
+            color: #fff;
+        }
+    }
+    .mycomplaints, .renew-container {
+        margin-top: 62px;
+    }
+}
+.mob-user-detail {
+     p {
+        margin: 15px 0 15px 0;
+        font-size: 13px;
+        font-weight: bold;
+        padding-left: 15px;
+        color: #00BCD4;
+     }
+}
+@media (max-width:359px) {
+    .nav > li > a {
+        padding: 10px;
+        font-size: 14px !important;
+    }
+}
+
+
