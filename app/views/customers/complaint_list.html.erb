@@ -13,7 +13,7 @@
 			<div class="row billing-addr">
 				<div class="col-md-12">
 					  <h4 class="list-group-item-heading"><%= complaint.complaint_sub %></h4>
-					  <p class="list-group-item-text"><%= truncate(complaint.complaint_body, length:100) %></p>
+					  <p class="list-group-item-text"><%= complaint.complaint_body %></p>
 					  <hr/>
 					  <div class="created-text">
 					  	<small>Created on <%=time_tag(complaint.created_at)%>, <%=time_ago_in_words(complaint.created_at) %> ago </small>

@@ -20,7 +20,7 @@
 					</div>
 					<div class="form-group col-xs-12 col-md-12">
 						<%= label_tag(:complaint_body, "Complaint body") %>
-						<%= text_field_tag :complaint_body, params[:complaint_body], placeholder: 'Enter complaint description', class: 'form-control' %>
+						<%= text_area :complaint_body, params[:complaint_body], rows: 3, placeholder: 'Enter complaint description', class: 'form-control' %>
 						<%#= text_field_tag :complaint_body, params[:complaint_body], placeholder: 'Enter complaint description', class: 'form-control' %>
 					</div>
 					<div class="col-xs-12 col-md-12">
