@@ -9,10 +9,10 @@ class ComplaintsController < ApplicationController
   end
 
   def create
-  	# render plain: params[:custom_id]
+  	# render plain: params
     @customer = Customer.find_by_userid(params[:custom_id])
     if @customer
-      @complaint = Complaint.new(customer_id: @customer.id, complaint_sub: params[:complaint_sub], complaint_body: params[:complaint_body])
+      @complaint = Complaint.new(customer_id: @customer.id, complaint_sub: params[:complaint_sub], complaint_body: params[:complaint_body][0])
       if @complaint.save
         flash[:success] = "Complaint successfully raised"
         redirect_to root_path

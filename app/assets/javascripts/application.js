@@ -152,13 +152,16 @@ function addressCheckBox() {
  
 
 function tableHeight() {
-	var navHeight = $(".main-navbar").height();
-	var headHeight = $("#page-heading").height();
-	var innerNav = $(".customer-navbar").height();
-    var winHeight = $(window).height();
-    var offsetHeight = navHeight+headHeight+innerNav;
-    var finalTableHeight = winHeight-offsetHeight;
-	$(".resp-table").height(finalTableHeight-54);
+	if ($(window).width() >= 991) {
+		var navHeight = $(".main-navbar").height();
+		var headHeight = $("#page-heading").height();
+		var innerNav = $(".customer-navbar").height();
+	    var winHeight = $(window).height();
+	    var offsetHeight = navHeight+headHeight+innerNav;
+	    var finalTableHeight = winHeight-offsetHeight;
+		$(".resp-table").height(finalTableHeight-54);
+	}
+	
 }
 
 function calculateTotalAmount(){

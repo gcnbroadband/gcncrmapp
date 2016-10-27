@@ -31,10 +31,46 @@
 			</div>
 		<% end %>
 	</div>
+
+	<div id="side-bar-toggle">
+		<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-mobile-img" ), root_path, :alt=>"logo"  %>
+		<div class="mob-user-detail">
+			<% if current_user %>
+			  <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= current_user.email %></p>
+			<% end %>
+		</div>
+		<ul class="nav sidebar-nav">
+		  	<li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Primary Details'.html_safe, customer_path(@customer) %></li>
+		  	<li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Payment Details'.html_safe, payment_detail_customer_path(@customer) %></li>
+		  	<li><%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renewals'.html_safe, myrenewal_customer_path(@customer) %></li>
+		  	<% if (current_user.tele_caller == true) || (current_user.gcn_admin == true) %>
+		  		<li><%=link_to '<i class="fa fa-bell-o fa-lg" aria-hidden="true"></i> Take Complaint'.html_safe, new_complaint_path %></li>
+		  	<% end %>
+		  	<li><%=link_to '<i class="fa fa-cogs fa-lg" aria-hidden="true"></i> See Complaints'.html_safe, complaint_list_customer_path(@customer) %></li>
+		  	<% if current_user %>
+		  	  <li><%= link_to '<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
+		  	<% end %>  
+		</ul>
+	</div>
+
+	<div class="mob-overlay" id="mob-overlay"></div>
+	<div class="container">
+			<div class="mob-header row hidden-md hidden-lg">
+				<div class="col-xs-2">
+		 			<i class="fa fa-bars fa-lg" aria-hidden="true" align="left" id="menu-toggle"></i> 
+				</div>
+				<div class="col-xs-8 mob-header-text">
+				<!-- <i class="fa fa-bars" aria-hidden="true" align="left"></i> -->
+					GCN BROADBAND
+				</div>
+				<div class="col-xs-4"></div>
+			</div>
+	</div>
+
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-2 col-md-2 col-sm-2 side-bar">
+			<div class="col-lg-2 col-md-2 col-sm-2 side-bar hidden-xs">
 				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
 				<ul class="nav sidebar-nav">
 				  <li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Primary Details'.html_safe, customer_path(@customer) %></li>
@@ -47,12 +83,14 @@
 
 				</ul>
 			</div>
-			<div class="col-sm-10 col-lg-10 col-md-10 side-bar-contet" style="float:right">
+			<div class="col-sm-10 col-lg-10 col-md-10 col-xs-12 side-bar-contet" style="float:right">
 				<%= render 'layouts/navbarcustomer' %>	
 				<%= yield %>
 		  	</div>
 		</div>
 		
 	</div>
+
+	
 </body>
 </html>

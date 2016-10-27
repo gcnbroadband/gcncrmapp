@@ -1,26 +1,26 @@
 <div class="row" id="row-two">
-  <div class="col-md-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
     <h3 class="page-heading"><i class="fa fa-money" aria-hidden="true"></i> Payment details</h3>
     <hr/>
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-8 col-sm-12 col-xs-12">
     <h4 class="heading-h4"><strong>Plan details</strong></h4>
-    <div class="custom-well col-md-12">
-      <div class="col-md-4">
+    <div class="custom-well col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="monthly-payment">
           <p><b>Plant cost</b></p>
           <hr/>
           <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @customer.payment_detail.plan_cost %></p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="monthly-payment">
           <p><b>tax</b> <small>(15%)</small></p>
           <hr/>
           <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @customer.payment_detail.plan_tax %></p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="monthly-payment">
           <p><b>Monthly plan cost</b></p>
           <hr/>
@@ -29,29 +29,29 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <br/>
         <h4 class="heading-h4"><strong>Total amount details</strong></h4>
       </div>
     </div>
-    <div class="custom-well col-md-12">
+    <div class="custom-well col-md-12 col-sm-12 col-xs-12">
       <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-4">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="monthly-payment">
               <p><b>No.of months</b></p>
               <hr/>
               <p><%= @customer.payment_detail.no_of_months_paid %></p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="monthly-payment">
               <p><b>Installation charges</b></p>
               <hr/>
               <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @customer.payment_detail.installation_charge %></p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="monthly-payment">
               <p><b>Other charges</b></p>
               <hr/>
@@ -62,8 +62,8 @@
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-6">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="panel panel-success payment-panels">
                 <div class="panel-heading">Total Commited amount</div>
                 <div class="panel-body">
@@ -73,7 +73,7 @@
                 </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="panel panel-danger payment-panels">
                 <div class="panel-heading">Commited balance</div>
                 <div class="panel-body">
@@ -93,135 +93,140 @@
       </div>
     </div>
   </div>
-  <div class="col-md-12 col-lg-8">
+  <div class="col-md-12 col-lg-8 col-sm-12 col-xs-12">
     <br/>
     <h4 class="heading-h4"><strong>Bill book details</strong></h4>
-    <table class="table table-striped bill-table">
-      <tr class="info">
-        <th>Billing date</th>
-        <th>Bill Book no</th>
-        <th>Bill slip no</th>
-        <th>Bill Amount</th>
-        <th>Bill paid by </th>
-        <th>Pending Amount </th>
-      </tr>
-      <% @customer.bill_books.each do |bill| %>
-        <tr>
-          <td><i class="fa fa-calendar" aria-hidden="true"></i> <%= bill.bill_book_date %></td>
-          <td><i class="fa fa-book" aria-hidden="true"></i> <%= bill.bill_book_no %></td>
-          <td><i class="fa fa-file-text-o" aria-hidden="true"></i> <%= bill.bill_no %></td>
-          <td><i class="fa fa-inr" aria-hidden="true"></i> <%= bill.bill_amount %></td>
-          <td><%= bill.bill_paid_by %></td>
-            <td>
-              <% if bill.pending_bill.to_i > 0 %>
-                <i class="fa fa-inr" aria-hidden="true"></i> <%= bill.pending_bill.to_i %>
-              <% else %>
-                No Pending bill 
-              <% end %>
-            </td>
+    <div class="table-responsive">
+      <table class="table table-striped bill-table">
+        <tr class="info">
+          <th>Billing date</th>
+          <th>Bill Book no</th>
+          <th>Bill slip no</th>
+          <th>Bill Amount</th>
+          <th>Bill paid by </th>
+          <th>Pending Amount </th>
         </tr>
-      <% end %>
-    </table>                          
+        <% @customer.bill_books.each do |bill| %>
+          <tr>
+            <td><i class="fa fa-calendar" aria-hidden="true"></i> <%= bill.bill_book_date %></td>
+            <td><i class="fa fa-book" aria-hidden="true"></i> <%= bill.bill_book_no %></td>
+            <td><i class="fa fa-file-text-o" aria-hidden="true"></i> <%= bill.bill_no %></td>
+            <td><i class="fa fa-inr" aria-hidden="true"></i> <%= bill.bill_amount %></td>
+            <td><%= bill.bill_paid_by %></td>
+              <td>
+                <% if bill.pending_bill.to_i > 0 %>
+                  <i class="fa fa-inr" aria-hidden="true"></i> <%= bill.pending_bill.to_i %>
+                <% else %>
+                  No Pending bill 
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>                          
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
     <% if (current_user.tele_caller == true) || (current_user.gcn_admin == true) %>
-      <a data-toggle="modal" class="btn btn-md btn-success" href="#add_project">Add new bill</a>    
+      <a data-toggle="modal" class="btn btn-md btn-success" id="new_bill" href="#add_project">Add new bill</a>    
     <% end %>
   </div>
-  <div id="add_project" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-md">
-          <!-- Modal content-->
-          <div class="modal-content">
-              <div class="modal-header login-header">
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                  <h4 class="modal-title">Add new bill</h4>
-              </div>
-              <div class="modal-body">
-                <%= form_for @bill do |f| %>
-                  <div class="form-group col-md-6 icon-view">
-                    <%= f.label :bill_book_date, "Bill book date" %>
-                    <%= f.text_field :bill_book_date, class: "form-control required", placeholder: "Enter billing date" %>
-                    <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                  </div>
-                  <div class="form-group col-md-6 icon-view">
-                    <%= f.label :bill_book_no, "Bill book number" %>
-                    <%= f.text_field :bill_book_no, class: "form-control required",  placeholder: "Enter bill book number" %>
-                    <i class="fa fa-book fa-lg" aria-hidden="true"></i>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <%= f.label :bill_no, "Bill slip number" %>
-                    <%= f.text_field :bill_no, class: "form-control required",  placeholder: "Enter bill slip number" %>
-                  </div>
-                  <div class="form-group col-md-6 icon-view-rupee">
-                    <%= f.label :bill_amount, "Bill amount" %>
-                    <%= f.text_field :bill_amount, class: "form-control required",  placeholder: "Enter bill amount" %>
-                    <i class="fa fa-inr fa-lg" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <%= f.label :bill_paid_by, "Bill paid by" %>
-                          <%= f.text_field :bill_paid_by, class: "form-control required", :readonly => true%>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="radio radio-primary">
-                        <label>
-                           <input type="radio" name="asd[custom_cash_proof_show]" value="Cash" >
-                           Cash
-                        </label>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="radio radio-primary">
-                        <label>
-                           <input type="radio" name="asd[custom_cash_proof_show]" value="Check" >
-                           Check
-                        </label>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="radio radio-primary">
-                        <label>
-                           <input type="radio" name="asd[custom_cash_proof_show]" value="DD" >
-                            DD
-                        </label>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="radio radio-primary">
-                        <label>
-                          <input type="radio" name="asd[custom_cash_proof_show]" value="Net banking">
-                          Netbanking
-                        </label>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="radio radio-primary">
-                        <label>
-                          <input type="radio" name="asd[custom_cash_proof_show]" value="Debit card">
-                            Debit card
-                        </label>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="radio radio-primary">
-                        <label>
-                          <input type="radio" name="asd[custom_cash_proof_show]" value="Credit card">
-                            Credit card
-                        </label>
-                      </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                     <div class="col-md-6">
-                       <button name="customer[customer_id]" type="submit" value="<%=@customer.id %>" class="btn btn-md btn-success btn-raised add-bill-btn">Add new bill</button>
-                     </div>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-          </div>
-      </div>
-  </div>
+  
 </div><!-- End of row-1-->
+
+<div id="add_project" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header login-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Add new bill</h4>
+            </div>
+            <div class="modal-body">
+              <%= form_for @bill do |f| %>
+                <div class="form-group col-md-6 icon-view">
+                  <%= f.label :bill_book_date, "Bill book date" %>
+                  <%= f.text_field :bill_book_date, class: "form-control required", placeholder: "Enter billing date" %>
+                  <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+                </div>
+                <div class="form-group col-md-6 icon-view">
+                  <%= f.label :bill_book_no, "Bill book number" %>
+                  <%= f.text_field :bill_book_no, class: "form-control required",  placeholder: "Enter bill book number" %>
+                  <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :bill_no, "Bill slip number" %>
+                  <%= f.text_field :bill_no, class: "form-control required",  placeholder: "Enter bill slip number" %>
+                </div>
+                <div class="form-group col-md-6 icon-view-rupee">
+                  <%= f.label :bill_amount, "Bill amount" %>
+                  <%= f.text_field :bill_amount, class: "form-control required",  placeholder: "Enter bill amount" %>
+                  <i class="fa fa-inr fa-lg" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <%= f.label :bill_paid_by, "Bill paid by" %>
+                        <%= f.text_field :bill_paid_by, class: "form-control required", :readonly => true%>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="radio radio-primary">
+                      <label>
+                         <input type="radio" name="asd[custom_cash_proof_show]" value="Cash" >
+                         Cash
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="radio radio-primary">
+                      <label>
+                         <input type="radio" name="asd[custom_cash_proof_show]" value="Check" >
+                         Check
+                      </label>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="radio radio-primary">
+                      <label>
+                        <input type="radio" name="asd[custom_cash_proof_show]" value="Net banking">
+                        Netbanking
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="radio radio-primary">
+                      <label>
+                        <input type="radio" name="asd[custom_cash_proof_show]" value="Debit card">
+                          Debit card
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="radio radio-primary">
+                      <label>
+                        <input type="radio" name="asd[custom_cash_proof_show]" value="Credit card">
+                          Credit card
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="radio radio-primary">
+                      <label>
+                         <input type="radio" name="asd[custom_cash_proof_show]" value="DD" >
+                          DD
+                      </label>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                   <div class="col-md-6">
+                     <button name="customer[customer_id]" type="submit" value="<%=@customer.id %>" class="btn btn-md btn-success btn-raised add-bill-btn">Add new bill</button>
+                   </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>

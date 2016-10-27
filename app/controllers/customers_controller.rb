@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
   end
 
   def activate 
-    if (current_user.gcn_admin == true) || (current_user.tele_caller == true)
+    if ((current_user.gcn_admin == true) || (current_user.tele_caller == true) || (current_user.team_lead == true))
       @customer = Customer.find(params[:id])
       render layout: "compliant"
     else
@@ -25,14 +25,14 @@ class CustomersController < ApplicationController
   end
   def active
     #render plain: activate_params
-    @customer = Customer.find(params[:id])
-    if @customer.update(activate_params)
-      flash[:success] = "Customer is activated successfully"
-      redirect_to root_path
-    else
-      flash[:success] = "something went wrong"
-      render 'activate'
-    end
+      @customer = Customer.find(params[:id])
+      if @customer.update(activate_params)
+        flash[:success] = "Customer is activated successfully"
+        redirect_to root_path
+      else
+        flash[:success] = "something went wrong"
+        render 'activate'
+      end
   end
   def complaint_list
     @customer = Customer.find(params[:id])

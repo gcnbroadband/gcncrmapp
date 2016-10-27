@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 col-xs-12">
     <h3 class="page-heading"><i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renewals</h3>
     <hr/>
   </div>
   <% if @customer.renewals.count > 0 %>
-	  <div class="col-md-8">
+	  <div class="col-md-8 col-xs-12">
 	  	<table class="table table-striped">
 	  		<tr class="danger">
 	  			<th>Renew date</th>
@@ -20,7 +20,7 @@
 	  		<% end %>
 	  	</table>
 	  </div>
-	  <div class="col-md-4">
+	  <div class="col-md-4 col-xs-12">
 	  <% balance_amount = (@customer.bill_books.sum(:bill_amount).to_i-@customer.payment_detail.monthly_payment_cost.to_i-@customer.renewals.sum(:renew_amount).to_i) %>
 	  <% if balance_amount < 0 %>
 	  	 <div class="panel panel-success payment-panels">

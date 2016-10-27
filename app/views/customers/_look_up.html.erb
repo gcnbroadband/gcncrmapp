@@ -48,14 +48,13 @@
 			          <td><%= customer.id %></td>
 			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
 			          <td>
-			          	<% if (customer.cust_id == "") %>
-			          		<% if (current_user.tele_caller == true) || (current_user.gcn_admin == true) %>
+			          	<% if (customer.cust_id.nil? || customer.cust_id.empty?) %>
+			          		<% if (current_user.tele_caller == true) || (current_user.gcn_admin == true)%>
 			          			<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
 			          		<% else %>
 			          			<span style="color:red"><strong>Inactive</strong></span>
 			          		<% end %>	
-			          	<% end %>
-			          	<% if (customer.cust_id != "") %>
+			          	<% else %>
 			          		<strong><i class="fa fa-user" aria-hidden="true"></i> <%= customer.cust_id %></strong>
 			          	<% end %>
 			          </td>
