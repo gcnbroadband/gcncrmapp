@@ -257,6 +257,9 @@ function calculateTotalAmount(){
 // }
 
 function datePicker(){
+	$('#complaint_closed_date').datetimepicker({
+		format: 'DD-MM-YYYY'
+	});
 	$('#customer_date').datetimepicker({
 		format: 'DD-MM-YYYY'
 	});
@@ -314,8 +317,8 @@ function sideBarToggle() {
 	$('#menu-toggle, #menu-toggle-complaint').click(function(){
 		// alert("jjjjjjjjjjj")
 	  $("#mob-overlay, #mob-overlay-complaint").fadeIn();
-	  $('#side-bar-toggle,#side-bar-toggle-complaint').addClass('open');
-	  if($('#side-bar-toggle, #side-bar-toggle-complaint').hasClass('open')){
+	  $('#side-bar-toggle,#side-bar-toggle-complaint').addClass('open-menu');
+	  if($('#side-bar-toggle, #side-bar-toggle-complaint').hasClass('open-menu')){
 	      $(document).mouseup(function (e)
 	      {
 	          var containernav = $("#side-bar-toggle, #side-bar-toggle-complaint");
@@ -323,7 +326,7 @@ function sideBarToggle() {
 	          if (!containernav.is(e.target) // if the target of the click isn't the container...
 	              && containernav.has(e.target).length === 0) // ... nor a descendant of the container
 	          {
-	              containernav.removeClass('open');
+	              containernav.removeClass('open-menu');
 	              $("#mob-overlay, #mob-overlay-complaint").fadeOut();
 	          }
 	      });
@@ -363,6 +366,7 @@ $(document).on('turbolinks:load', function(){
 	$("#new_employee_detail").validate();
 	$("#renew-form").validate();
 	$("#new_gcn_plan").validate();
+	$(".edit_complaint").validate();
 	currentPage()
 	$("#bill_book, #submit-btn").hide();
 	roles()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025102315) do
+ActiveRecord::Schema.define(version: 20161031113203) do
 
   create_table "bill_books", force: true do |t|
     t.integer  "customer_id"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20161025102315) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "complaint_resolve",  default: false
+    t.text     "real_issue"
+    t.string   "complaint_fixed_by"
+    t.string   "closed_date"
   end
 
   add_index "complaints", ["customer_id"], name: "index_complaints_on_customer_id", using: :btree

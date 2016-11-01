@@ -25,14 +25,25 @@ Rails.application.routes.draw do
         get 'myrenewal'
      end
   end
+
   get 'search_customers', to: "customers#search"
   get 'customer_activate/:id', to: "customers#activate"
   get 'search_employees', to: "employee_details#search"
-
   put 'active', to: "customers/active"
   get 'customer_complaint_list/:id', to: "customers#complaint_list"
   get 'customer_payment_detail/:id', to: "customers#payment_detail"
   get 'myrenewal/:id', to: "customers#myrenewal"
+
+
+  resources :complaints  do
+     member do
+        get 'resolve'
+        put 'success'
+     end
+  end
+  
+  get 'resolve/:id',   to: "complaints#resolve"
+  put 'complaint_succcess', to: "complaints#success"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

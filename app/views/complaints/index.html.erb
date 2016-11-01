@@ -1,38 +1,113 @@
 <div class="container-fluid">
 	<div class="row mycomplaints">
-		<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-xs-12 col-sm-12"><h4 class="complaints-all">All Complaints</h4><hr/></div>
+		<div class="container-fluid">
+			<ul class="nav nav-tabs custom-tabs">
+			  <li class="active"><a data-toggle="tab" href="#home">OPEN</a></li>
+			  <li><a data-toggle="tab" href="#menu1">CLOSED</a></li>
+			</ul>
 
-	</div>
-	<% @complaint.each do |complaint| %>
-		<div class="row">
-			<div class="col-xs-12 col-md-4 col-md-offset-4">
-			<div class="row billing-addr">
-				<div class="col-md-12">
-					  <h5 class="cust-user-name">
-					  	<b> 
-					  		<% if complaint.customer %>
-					  			<span class="glyphicon glyphicon-user"></span>
-					  	 		<%= complaint.customer.name.capitalize %>
-					  	 	<% end %>
-					  	 </b>
-					  </h5>
-					  <h5 class="cust-user">
-					  	   <b>
-					  	   		<% if complaint.customer %>
-					  	   			<%= complaint.customer.cust_id %>
-					  	   		<% end %>	
-					  	   	</b>
-					  </h5>
-					  <hr/>
-					  <h4 class="list-group-item-heading"><%= complaint.complaint_sub %></h4>
-					  <p class="list-group-item-text"><%= truncate(complaint.complaint_body, length:100) %></p>
-					  <hr/>
-					  <div class="created-text">
-					  	<small>Created <%=time_ago_in_words(complaint.created_at) %> ago, Updated <%=time_ago_in_words(complaint.updated_at) %> ago </small>
-					</div>
-				</div>
-			</div>
+			<div class="tab-content">
+				  <div id="home" class="tab-pane fade in active">	
+				  		<div class="table-responsive">
+				  	  		<table class="table table-striped">
+				  	  			<thead>
+				  	  				<tr class="danger">
+				  	  					<th>Customer name</th>
+				  	  					<th>User Id</th>
+				  	  					<th>Subject</th>
+				  	  					<th>Description</th>
+				  	  					<th></th>
+				  	  				</tr>
+				  	  			</thead>
+				  	  			  	
+				  				  			<tbody>
+				  				  			<% @complaint.each do |complaint| %>
+				  	  				  			<% if complaint.complaint_resolve == true %>
+				  				  				<tr>
+				  				  					<td>
+				  			  							<% if complaint.customer %>
+				  			  								<span class="glyphicon glyphicon-user"></span>
+				  			  						 		<%= complaint.customer.name.capitalize %>
+				  			  						 	<% end %>
+				  				  					</td>
+				  				  					<td>
+				  				  						<% if complaint.customer %>
+				  				  							<%= complaint.customer.cust_id %>
+				  				  						<% end %>
+				  				  					</td>
+				  				  					<td>
+				  				  						<%= complaint.complaint_sub %>
+				  				  					</td>
+				  				  					<td>
+				  				  						<%= truncate(complaint.complaint_body, length:100) %>
+				  				  					</td>
+				  				  					<td>
+				  				  						<% if complaint.complaint_resolve == true %>
+				  				  							<b><%= link_to 'CLOSE', resolve_complaint_path(complaint),class: "btn btn-xs btn-danger btn-raised close_complaint" %></b>
+				  				  						<% else %>
+				  				  							<p class="success_complaint"><small> <i class="fa fa-check-circle-o" aria-hidden="true"></i> Successfully solved by <%= complaint.complaint_fixed_by %></small></p>
+				  				  						<% end %>
+				  				  					</td>
+				  				  				</tr>
+				  				  				<% end %>
+				  				    <% end %>
+				  				  			</tbody>
+				  				  	    
+				  	  		</table>
+				  	  	</div>	
+				  </div>
+				  <div id="menu1" class="tab-pane fade">
+				  	
+					  		<div class="table-responsive">
+					  			  		<table class="table table-striped">
+					  			  			<thead>
+					  			  				<tr class="danger">
+					  			  					<th>Customer name</th>
+					  			  					<th>User Id</th>
+					  			  					<th>Subject</th>
+					  			  					<th>Description</th>
+					  			  					<th></th>
+					  			  				</tr>
+					  			  			</thead>
+					  			  			  	
+					  						  			<tbody>
+					  						  			<% @complaint.each do |complaint| %>
+					  			  				  			<% if complaint.complaint_resolve == true %>
+					  						  				<tr>
+					  						  					<td>
+					  					  							<% if complaint.customer %>
+					  					  								<span class="glyphicon glyphicon-user"></span>
+					  					  						 		<%= complaint.customer.name.capitalize %>
+					  					  						 	<% end %>
+					  						  					</td>
+					  						  					<td>
+					  						  						<% if complaint.customer %>
+					  						  							<%= complaint.customer.cust_id %>
+					  						  						<% end %>
+					  						  					</td>
+					  						  					<td>
+					  						  						<%= complaint.complaint_sub %>
+					  						  					</td>
+					  						  					<td>
+					  						  						<%= truncate(complaint.complaint_body, length:100) %>
+					  						  					</td>
+					  						  					<td>
+					  						  						<% if complaint.complaint_resolve == false %>
+					  						  							<b><%= link_to 'CLOSE', resolve_complaint_path(complaint),class: "btn btn-xs btn-danger btn-raised close_complaint" %></b>
+					  						  						<% else %>
+					  						  							<p class="success_complaint"><small> <i class="fa fa-check-circle-o" aria-hidden="true"></i> Successfully solved by <%= complaint.complaint_fixed_by %></small></p>
+					  						  						<% end %>
+					  						  					</td>
+					  						  				</tr>
+					  						  				<% end %>
+					  						    <% end %>
+					  						  			</tbody>
+					  						  	    
+					  			  		</table>
+					  		</div>
+				  </div>
 			</div>
 		</div>
-	<% end %>
+	</div>
 </div>
+

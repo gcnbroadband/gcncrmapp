@@ -22,12 +22,30 @@ class ComplaintsController < ApplicationController
       render 'new'
     end
   end
+ 
+  def resolve
+    @complaint = Complaint.find(params[:id])
+  end
+
+  def success
+     # render plain: params_complaint
+     @complaint = Complaint.find(params[:id])
+     @complaint.complaint_fixed_by = current_user.emp_id
+     @complaint.complaint_resolve = true
+     if @complaint.update(params_complaint)
+      redirect_to root_path
+      flash[:success] = "Complaint successsfully fixed"
+     else
+      flash[:danger] = "Something went wrong"
+     end
+
+  end
 
   def show
   end
 
   private
   def params_complaint
-  	params.require(:complaint).permit(:complaint_sub, :complaint_body)
+  	params.require(:complaint).permit(:complaint_sub, :complaint_body, :complaint_fixed_by, :real_issue, :closed_date)
   end
 end
