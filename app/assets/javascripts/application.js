@@ -289,7 +289,7 @@ function datePicker(){
 }
 
  function currentPage(){
- 	$(".sidebar-nav li a[href]").each(function() {
+ 	$(".page-links tr td a[href]").each(function() {
  	if (this.href == window.location.href) {
  	    $(this).addClass("current");
  	    console.log(window.location.href);

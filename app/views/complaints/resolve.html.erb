@@ -1,34 +1,43 @@
-<div class="container renew-container">
-	<div class="row">
-		<div class="col-md-offset-4 col-md-4 zone-form-block">
-				<div class="row billing-addr">
-					<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-complaint-img" ), root_path, :alt=>"logo"  %>
-				</div>	
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-offset-4 col-md-4">
-			<%= form_for @complaint, method: :put, url: success_complaint_path do |f| %>
-				<div class="row billing-addr">
-					<div class="form-group col-md-12 icon-view">
-						<%= f.label :closed_date, "Closing Date" %>
-						<%= f.text_field :closed_date, class: "form-control required",  placeholder: "Enter closing date" %>
-						<i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
-					</div>
-					<div class="form-group col-md-12 icon-view">
-						<%= f.label :real_issue, "Write Issue" %>
-						<%= f.text_area :real_issue, class: "form-control required", :rows => 3,  placeholder: "Write issue" %>
-						<i class="fa fa-file-text-o fa-lg" aria-hidden="true"></i>
-					</div>
-					<div class="col-md-12">
-						<%= f.submit 'Close complaint', class: "btn btn-raised btn-success btn-block complaint_btn" %> 
-					</div>
-					<div class="col-md-12" align="center">
-						<br/>
-						<%=link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back'.html_safe, root_path %>
-					</div>
-				</div>	
-			<% end %>
-		</div>
-	</div>
+
+<div class="wrapper">
+  <div id="page-heading">
+    <h1><span class="glyphicon glyphicon-th-list"></span> Close Complaint</h1>
+    <hr/>
+  </div>  
+    
+    <nav class="navbar navbar-default customer-navbar">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><%=link_to '<span class="glyphicon glyphicon-th-list"></span> Complaints'.html_safe, complaints_path %></li>
+          <li>
+            <%=link_to '<span class="glyphicon glyphicon-plus"></span> New complaint'.html_safe, new_complaint_path %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+    	<div class="col-md-4">
+    		<%= form_for @complaint, method: :put, url: success_complaint_path do |f| %>
+    			<div class="billing-addr">
+    				<div class="form-group col-md-12 icon-view">
+    					<%= f.label :closed_date, "Closing Date" %>
+    					<%= f.text_field :closed_date, class: "form-control required",  placeholder: "Enter closing date" %>
+    					<i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+    				</div>
+    				<div class="form-group col-md-12 icon-view">
+    					<%= f.label :real_issue, "Write Issue" %>
+    					<%= f.text_area :real_issue, class: "form-control required", :rows => 3,  placeholder: "Write issue" %>
+    					<i class="fa fa-file-text-o fa-lg" aria-hidden="true"></i>
+    				</div>
+    				<div class="col-md-12">
+    					<%= f.submit 'Close complaint', class: "btn btn-raised btn-success btn-block complaint_btn" %> 
+    				</div>
+    				<div class="col-md-12" align="center">
+    					<br/>
+    					<%=link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back'.html_safe, root_path %>
+    				</div>
+    			</div>	
+    		<% end %>
+    	</div>
+    </div>
 </div>

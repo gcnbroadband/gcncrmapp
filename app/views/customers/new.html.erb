@@ -7,6 +7,9 @@
     <ul class="nav navbar-nav" id="inner-nav-bar">
       <li><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, root_path %></li>
       <li class="active"><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
+      <li>
+          <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew'.html_safe, new_renewal_path %>
+      </li>
     </ul>
   </div>
 </nav>

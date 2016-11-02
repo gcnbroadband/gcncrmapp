@@ -1,5 +1,5 @@
 class ZonesController < ApplicationController
-	layout 'custom'
+	layout 'zones'
   def index
     @zone = Zone.all
   end

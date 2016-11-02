@@ -1,5 +1,5 @@
 class RenewalsController < ApplicationController
-    layout 'compliant'
+    layout 'custom'
     def index
     end
 
