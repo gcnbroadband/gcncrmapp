@@ -24,8 +24,11 @@ class CustomersController < ApplicationController
     render layout: "customerdashbord"
   end
   def active
-    #render plain: activate_params
+    # render plain: params[:customer][:net_plan]
+      @plan = Plan.find_by_rate(params[:customer][:net_plan])
       @customer = Customer.find(params[:id])
+      @customer.net_plan = @plan.plan_pattern
+      # render plain: @customer.net_plan
       if @customer.update(activate_params)
         flash[:success] = "Customer is activated successfully"
         redirect_to root_path
@@ -111,7 +114,8 @@ class CustomersController < ApplicationController
   end
 
   def activate_params
-    params.require(:customer).permit(:cust_id)
+    params.require(:customer).permit(:cust_id, :activation_date, payment_detail_attributes: [:plan_cost, :plan_tax, :monthly_payment_cost,:id, :no_of_months_paid,
+      :installation_charge, :company_material_use, :company_material_cost, :total_amount, :pending_amount ])
     
   end
 end

@@ -278,6 +278,9 @@ function datePicker(){
 	$('#renew_date').datetimepicker({
 		format: 'DD-MM-YYYY'
 	});
+	$('#customer_activation_date').datetimepicker({
+		format: 'DD-MM-YYYY'
+	});
 	$("#customer-seach-box").hide();
 	$("#search-item").click(function(){
 		$("#customer-seach-box").slideDown();
@@ -366,7 +369,7 @@ $(document).on('turbolinks:load', function(){
 	$("#new_employee_detail").validate();
 	$("#renew-form").validate();
 	$("#new_gcn_plan").validate();
-	$(".edit_complaint").validate();
+	$(".edit_complaint, .edit_customer").validate();
 	currentPage()
 	$("#bill_book, #submit-btn").hide();
 	roles()
