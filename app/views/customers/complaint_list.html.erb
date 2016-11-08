@@ -1,25 +1,61 @@
+<%= render 'layouts/navbarcustomer' %>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <%= render 'dashbord_links' %>
+    <hr/>
+  </div>
+  <div class="col-lg-12 col-xs-12">
+    <div class="row">
+      <div class="col-md-12 col-lg-8 col-xs-12">
+        <%= render 'expense_table' %>
+        
+      </div>
+    </div>
+    <br/>
+  </div>
+</div>
+
 <div class="container-fluid">
 
 
 	<% if @customer.complaints.count > 0%>
-	<div class="row mycomplaints">
-		<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-xs-12 col-sm-12">
-			<h4 class="complaints-all"><span class="glyphicon glyphicon-user"></span>
-			 	<%= @customer.cust_id %>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+			<h4 class="complaints-all">
+			 	<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> All complaints <span class="badge"><%= @customer.complaints.count %></span>
 			</h4>
 		<hr/></div>
 	</div>
 	<% @customer.complaints.each do |complaint| %>
 		<div class="row">
-			<div class="col-xs-12 col-md-4 col-md-offset-4">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<div class="row billing-addr">
 				<div class="col-md-12">
-					  <h4 class="list-group-item-heading"><%= complaint.complaint_sub %></h4>
+					  <h4 class="list-group-item-heading"><%= link_to complaint.complaint_sub, complaint_path(complaint) %></h4>
 					  <p class="list-group-item-text"><%= complaint.complaint_body %></p>
 					  <hr/>
 					  <div class="created-text">
 					  	<small>Created on <%=time_tag(complaint.created_at)%>, <%=time_ago_in_words(complaint.created_at) %> ago </small>
-					</div>
+					  </div>
+					  <hr/>
+					  <% if complaint.complaint_resolve == false %>
+					  	<span class="label label-danger"><%= link_to 'CLOSE', resolve_complaint_path(complaint), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %></span>
+					  <% else %>
+					  	<span class="label label-success"><small> Successfully solved by <%= complaint.complaint_fixed_by %></small></span>
+					  	
+
+					  	<!-- <span class="label label-info">
+					  		<small> 
+					  		<%# user = User.find(complaint.complaint_closed_by) %>
+					  		Successfully closed by 
+					  		<%# if user %>
+					  			<%#= user.name %> (<%#= user.emp_id %>)
+					  		<%# end %>
+					  		</small>
+					  	</span>	 -->
+
+					  	
+					 <% end %>
 				</div>
 			</div>
 			</div>
@@ -27,7 +63,9 @@
 	<% end %> 
 	<% else %>
 		<div class="row">
-			<div class="col-md-offset-4 col-md-4"><h4 class="complaints-all">No Complaints Yet.</h4></div>
+			<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12"><h4 class="complaints-all">No Complaints Yet.</h4></div>
 		</div>
 	<% end %>
 </div>
+
+

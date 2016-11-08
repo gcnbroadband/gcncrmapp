@@ -9,6 +9,52 @@ class CustomersController < ApplicationController
       render status: not_found, nothing: true
     end
   end
+  def search_complaint
+    @customer = Customer.search(params[:search_params])
+    if @customer
+      render partial: "complaints/complaint_lookup"
+    else
+      render status: not_found, nothing: true
+    end
+  end
+
+  def search_active_customer
+    @customer = Customer.search(params[:search_params])
+    if @customer
+      render partial: "active_customer_lookup"
+    else
+      render status: not_found, nothing: true
+    end
+  end
+
+  def active_customers
+    if current_user.marketing_executive == true
+      @customer = current_user.customers
+    elsif current_user.gcn_admin == true 
+      @customer = Customer.all
+    elsif (current_user.team_lead == true ) || (current_user.tele_caller == true) || (current_user.technician == true)
+      @customer = Customer.find_by_zone_id(current_user.zone_id)
+    end
+  end
+
+  def inactive_customers
+    if current_user.marketing_executive == true
+      @customer = current_user.customers
+    elsif current_user.gcn_admin == true 
+      @customer = Customer.all
+    elsif (current_user.team_lead == true ) || (current_user.tele_caller == true) || (current_user.technician == true)
+      @customer = Customer.find_by_zone_id(current_user.zone_id)
+    end
+  end
+
+  def search_inactive_customer
+    @customer = Customer.search(params[:search_params])
+    if @customer
+      render partial: "inactive_customer_lookup"
+    else
+      render status: not_found, nothing: true
+    end
+  end
 
   def activate 
     if ((current_user.gcn_admin == true) || (current_user.tele_caller == true) || (current_user.team_lead == true))
@@ -21,7 +67,7 @@ class CustomersController < ApplicationController
   end
   def myrenewal 
     @customer = Customer.find(params[:id])
-    render layout: "customerdashbord"
+    # render layout: "customerdashbord"
   end
   def active
     # render plain: params[:customer][:net_plan]
@@ -39,7 +85,6 @@ class CustomersController < ApplicationController
   end
   def complaint_list
     @customer = Customer.find(params[:id])
-    render layout: "compliant"
   end
   def index
     if current_user.marketing_executive == true
@@ -69,12 +114,12 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     # @complaints = Complaint.all
     @bill = BillBook.new()
-    render layout: "customerdashbord"
+    # render layout: "customerdashbord"
   end
   def payment_detail
     @customer = Customer.find(params[:id])
     @bill = BillBook.new()
-    render layout: "customerdashbord"
+    # render layout: "customerdashbord"
   end
   def create
     #render plain: params[:customer][:payment_detail_attributes][:total_amount]
@@ -85,6 +130,7 @@ class CustomersController < ApplicationController
     arr = params[:customer][:bill_books_attributes].map { |k, v| v["bill_amount"]}
 
     @customer.bill_books.each do |bill|
+      bill.user = current_user
       bill.pending_bill = (params[:customer][:payment_detail_attributes][:total_amount].to_i - arr[0].to_i)
     end
     if @customer.save

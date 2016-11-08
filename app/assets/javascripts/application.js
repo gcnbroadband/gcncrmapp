@@ -302,6 +302,28 @@ function datePicker(){
  	    $(this).addClass("current");
  	    console.log(window.location.href);
  	}
+
+ 	$(".dashbord-links li a[href]").each(function() {
+ 	if (this.href == window.location.href) {
+ 	    $(this).addClass("current-tab");
+ 	    console.log(window.location.href);
+ 	}
+ 	});
+ 	if (this.href == window.location.href) {
+ 	    $(this).addClass("current-tab");
+ 	    console.log(window.location.href);
+ 	}
+
+ 	$("#customer_links li a[href]").each(function() {
+	 	if (this.href == window.location.href) {
+	 	    $(this).addClass("current-customer-link");
+	 	    console.log(window.location.href);
+	 	}
+ 	});
+ 	// if (this.href == window.location.href) {
+ 	//     $(this).addClass("current-customer-link");
+ 	//     console.log(window.location.href);
+ 	// }
  	
  }
 
@@ -364,11 +386,11 @@ $(document).on('turbolinks:load', function(){
 	$("#navigation").height($(window).height());
 	// customTab()
 	datePicker()
-	$("#new_bill_book").validate();
-	$("#new_customer").validate();
+	$("#new_bill_book, #new_plan").validate();
+	$("#new_customer,#new_zone").validate();
 	$("#new_employee_detail").validate();
-	$("#renew-form").validate();
-	$("#new_gcn_plan").validate();
+	$("#renew-form, #add_new_complaint").validate();
+	$("#new_gcn_plan, #renew-form-two").validate();
 	$(".edit_complaint, .edit_customer").validate();
 	currentPage()
 	$("#bill_book, #submit-btn").hide();

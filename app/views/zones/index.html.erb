@@ -28,21 +28,23 @@
       </div>
     </nav>
     
-    <table class="table table-striped">
-    	<tr class="danger">
-    		<th>Zone code</th>
-    		<th>Zone name</th>
-    		<th>District</th>
-    		<th>State</th>
-    	</tr>
-    	<% @zone.each do |zone| %>
-    	<tr>
-    		<td><%= zone.zone_code %></td>
-    		<td><%= zone.zone_name %></td>
-    		<td><%= zone.state %></td>
-    		<td><%= zone.district %></td>
-    	</tr>
-    	<% end %>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-striped table-centered table-bordered">
+        <tr class="danger">
+          <th>Zone code</th>
+          <th>Zone name</th>
+          <th>District</th>
+          <th>State</th>
+        </tr>
+        <% @zone.each do |zone| %>
+        <tr>
+          <td><%= zone.zone_code %></td>
+          <td><%= zone.zone_name %></td>
+          <td><%= zone.state %></td>
+          <td><%= zone.district %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
      
 </div>

@@ -52,3 +52,33 @@ init_employee_lookup = function(){
 $(document).on('turbolinks:load', init_employee_lookup);
 $(document).ready(init_employee_lookup);
 $(document).bind('page:change', init_employee_lookup);
+
+
+
+var init_complaint_lookup;
+
+init_complaint_lookup = function(){
+	$("#look-up-complaint-form").on('ajax:before', function(event, data, status){
+		$('#spin-lookup').show(); 
+		$('#search-complaint-cont').hide();
+	});
+	$("#look-up-complaint-form").on('ajax:after', function(event, data, status){
+		$('#spin-lookup').hide(); 
+		$('#search-complaint-cont').show();
+	});
+	$("#look-up-complaint-form").on('ajax:success', function(event, data, status){
+		$('#customer-complaint-block').replaceWith(data);
+		$('#customer-complaint-results').addClass('animated fadeIn');
+		$('.close-comp-lookup').show();
+		init_complaint_lookup(); 
+	});
+	$("#look-up-complaint-form").on('ajax:error', function(event, xhr, status, error){
+		$('#customer-lookup-results').replaceWith(' ');
+		$('#lookup-errors').text('Data Not Found');
+		$('#spin-lookup').hide(); 
+		$('#search-complaint-cont').show();
+	});
+}
+$(document).on('turbolinks:load', init_complaint_lookup);
+$(document).ready(init_complaint_lookup);
+$(document).bind('page:change', init_complaint_lookup);

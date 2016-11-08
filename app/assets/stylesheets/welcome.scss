@@ -89,7 +89,6 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
     border-radius: 4px;
     padding: 15px 0px;
     margin-bottom: 15px;
-        overflow: hidden;
     h4 {
     	font-size: 17px;
     	color: #337ab7;
@@ -806,7 +805,7 @@ header {
     padding-right: 0 !important;
 }
 button.btn.look-sub-btn {
-    width: 80%;
+    width: 100%;
 }
 .look-up-friend {
     margin-bottom: 0;
@@ -896,7 +895,15 @@ button.btn.look-sub-btn {
     padding: 0px 0px;
 }
 h4.list-group-item-heading {
-    color: #00BCD4;
+    a {
+        color: #00BCD4;
+        text-decoration: underline;
+        font-weight: 500;
+        &:hover {
+            text-decoration: none;
+            color: #129bad;
+        }
+    }
 }
 p.list-group-item-text {
     color: #4d4d4d;
@@ -909,7 +916,6 @@ p.list-group-item-text {
 .complaints-all {
     color: #e74c3c;
     font-weight: 600;
-    text-align: center;
     font-size: 23px;
     margin: 0;
 }
@@ -921,6 +927,12 @@ p.list-group-item-text {
     }
 }
 .main-navbar-customer {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.37);
+    background-color: #ffffff !important;
+    margin-top: 15px;
+    margin-top: 75px
+}
+.main-navbar-customer-two {
     box-shadow: 0 1px 2px rgba(0,0,0,0.37);
     background-color: #ffffff !important;
     margin-top: 15px;
@@ -1052,7 +1064,7 @@ p.list-group-item-text {
     margin: 0 auto;
 }
 .mob-overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
@@ -1061,6 +1073,7 @@ p.list-group-item-text {
     z-index: 12;
     display: none;
 }
+
 .close_complaint {
     float: right;
     margin: 0 !important;
@@ -1068,72 +1081,16 @@ p.list-group-item-text {
 }
 .success_complaint {
     margin: 0;
-    color: #27ae60;
+    color: #4CAF50;
     // font-weight: bold;
 }
+.badge-customer-count {
+    float: right;
+}
 .panel-body .table {margin-bottom: 0px; }
-@media (max-width:767px) {
-    .wrapper {
-        margin-top: 50px;
-    }
-    .navbar-nav {
-        margin: 0px;
-        li {
-            display: inline-block;
-        }
-    }
-    .customer-main-detail {
-        text-align: left
-    }
-    .main-navbar-customer {
-        margin-top: 62px;
-    }
-    .mob-header {
-        background: #e74c3c;
-        padding: 8px 15px;
-        position: fixed;
-        left: 0;
-        z-index: 10;
-        right: 0;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-        .mob-header-text{
-            margin: 0;
-            text-align: center;
-            font-size: 21px;
-            font-weight: bold;
-            line-height: 30px;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif !important;
-
-        }
-        i.fa-bars {
-            line-height: 30px;
-            color: #fff;
-        }
-    }
-    .mycomplaints, .renew-container {
-        margin-top: 62px;
-    }
-}
-.mob-user-detail {
-     p {
-        margin: 15px 0 15px 0;
-        font-size: 13px;
-        font-weight: bold;
-        padding-left: 15px;
-        color: #00BCD4;
-     }
-}
-@media (max-width:359px) {
-    .nav > li > a {
-        padding: 10px;
-        font-size: 14px !important;
-    }
-}
-
-
 // **********************************************Accordian Css Start*********************************************//
 .gcn-accordian {
+    margin-bottom: 0;
     .panel.panel-default {
         // box-shadow: none;
         border-radius: 0;
@@ -1151,6 +1108,7 @@ p.list-group-item-text {
                 float: right;
                 margin-left: 15px;
                 color: #fff;
+                font-size: 13px;
               }
               
             .panel-title {
@@ -1201,3 +1159,217 @@ p.list-group-item-text {
     }
 }
 // **********************************************Accordian Css Ends*********************************************//
+.table-expense {
+    tr {
+        th {
+            background-color: #4CAF50;
+            border: 1px solid #589c5a !important;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        td {
+            font-weight: bold;
+            border: 1px solid #4CAF50 !important;
+            text-align: center;
+            color: #ec867c;
+            font-size: 19px;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+        }
+    }
+}
+.customer_links {
+    ul {
+        // margin-bottom: 20px;
+        li {
+            display: inline-block;
+            a {
+                color: #00BCD4;
+                padding: 10px 20px;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 2px;
+                font-family: 'Rajdhani', sans-serif !important;
+                &:hover {
+                    // border-bottom: 5px solid #e74c3c;
+                    color: #e74c3c; 
+                }
+            }
+        }
+    }
+    hr {
+        margin-top: 13px;
+    }
+}
+.current-customer-link {
+    border-bottom: 5px solid #e74c3c !important;
+    color: #e74c3c !important;
+}   
+.complaint_ticket {
+    color: #2196f3;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+        color: #2196f3;
+    }
+}
+.complaint-block {
+    h3 {
+        color: #e74c3c;
+        text-transform: uppercase;
+        margin: 0;
+        font-weight: 600;
+        font-size: 16px;
+       
+    }
+    hr {
+        margin: 10px 0;
+        border-top: 1px solid #e74c3c
+    }
+    h4 {
+        text-decoration: underline; 
+        font-size: 15px;
+        color: #2196F3;
+    }
+    p {
+        margin: 0;
+    }
+    padding: 15px;
+    background: #f3f3f3;
+    border-radius: 3px;
+    border: 1px solid #e4e3e3;
+
+}
+.mob-gap {
+    margin-top: 15px; 
+}
+.dashbord-links {
+    margin-top: 20px; 
+    li {
+        display: inline-block;
+        a {
+            color: #fff;
+            padding: 10px 15px;
+            background-color: #ec867c;
+            border-radius: 3px;
+            &:hover {
+                background-color: #e74c3c;
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+                transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+    }
+}
+.current-tab {
+    background-color: #e74c3c !important;
+}
+.close-comp-lookup {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//**************************************************************************************************Mobile version*******************************************************************************//
+@media (max-width:767px) {
+    .wrapper {
+        margin-top: 50px;
+    }
+    .navbar-nav {
+        margin: 0px;
+        li {
+            display: inline-block;
+        }
+    }
+    .customer-main-detail {
+        text-align: left
+    }
+    .main-navbar-customer {
+        margin-top: 62px;
+    }
+    .mob-header {
+        background: #e74c3c;
+        padding: 8px 15px;
+        position: fixed;
+        left: 0;
+        z-index: 10;
+        right: 0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+        .mob-header-text{
+            margin: 0;
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 30px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif !important;
+
+        }
+        i.fa-bars {
+            line-height: 30px;
+            color: #fff;
+        }
+    }
+    .mycomplaints, .renew-container {
+        margin-top: 62px;
+    }
+    .customer_links ul li a {
+        padding: 10px 10px;
+    }
+}
+.mob-user-detail {
+     p {
+        margin: 15px 0 15px 0;
+        font-size: 13px;
+        font-weight: bold;
+        padding-left: 15px;
+        color: #00BCD4;
+     }
+}
+@media (max-width:359px) {
+    .nav > li > a {
+        padding: 10px;
+        font-size: 14px !important;
+    }
+}

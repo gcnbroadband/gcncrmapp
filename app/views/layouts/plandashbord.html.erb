@@ -38,15 +38,110 @@
 			  <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= current_user.email %></p>
 			<% end %>
 		</div>
+		<div class="panel-group gcn-accordian" id="accordion-complain-mob">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain-mob" data-target="#collapseOne-complain-mob">
+                    <h4 class="panel-title">
+                        <span><i class="fa fa-users" aria-hidden="true"></i> Customers</span>
+                    </h4>
+                </div>
+                <div id="collapseOne-complain-mob" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-users" aria-hidden="true"></i> All Customers'.html_safe, root_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add New Customer'.html_safe, new_customer_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew Customer'.html_safe, new_renewal_path %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain-mob" data-target="#collapseTwo-complain-mob">
+                    <h4 class="panel-title">
+                        <span><i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> Complaints</span>
+                    </h4>
+                </div>
+                <div id="collapseTwo-complain-mob" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> All Complaints'.html_safe, complaints_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain-mob" data-target="#collapseThree-complain-mob">
+                    <h4 class="panel-title">
+                        <span><i class="fa fa-cubes" aria-hidden="true"></i> Plans  </span>
+                    </h4>
+                </div>
+                <div id="collapseThree-complain-mob" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <table class="table page-links">
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-cubes" aria-hidden="true"></i> Plans'.html_safe, plans_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Complaint'.html_safe, new_plan_path %>
+                                </td>
+                            </tr>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain-mob" data-target="#collapseFour-complain-mob">
+                    <h4 class="panel-title">
+                        <span><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> Zones</span>
+                    </h4>
+                </div>
+                <div id="collapseFour-complain-mob" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <%=link_to '<i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> All Zones'.html_safe, zones_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Zone'.html_safe, new_zone_path %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+		</div><!-- end of accordian -->
 		<ul class="nav sidebar-nav">
-		  	<li class="active"><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Plan List'.html_safe, plans_path %></li>
-		  	<% if current_user.gcn_admin == true %>
-		  		<li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Create New Plan'.html_safe, new_plan_path %></li>
-		  	<% end %>
 		  	<% if current_user %>
 		  	  <li><%= link_to '<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
 		  	<% end %>  
-		  	<li class="active"><%=link_to '<i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i> Back'.html_safe, root_path %></li>
 		</ul>
 
 	</div>
@@ -68,14 +163,14 @@
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 side-bar hidden-xs">
 				<%= link_to image_tag("aboutimg.png", :border=>0, class: "img-responsive logo-img" ), root_path, :alt=>"logo"  %>
-				<div class="panel-group gcn-accordian" id="accordion-plan">
+				<div class="panel-group gcn-accordian" id="accordion-complain">
 	                <div class="panel panel-default">
-	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-plan" data-target="#collapseOne-plan">
+	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain" data-target="#collapseOne-complain">
 	                        <h4 class="panel-title">
 	                            <span><i class="fa fa-users" aria-hidden="true"></i> Customers</span>
 	                        </h4>
 	                    </div>
-	                    <div id="collapseOne-plan" class="panel-collapse collapse">
+	                    <div id="collapseOne-complain" class="panel-collapse collapse">
 	                        <div class="panel-body">
 	                            <table class="table">
 	                                <tr>
@@ -98,12 +193,12 @@
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
-	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-plan" data-target="#collapseTwo-plan">
+	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain" data-target="#collapseTwo-complain">
 	                        <h4 class="panel-title">
 	                            <span><i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> Complaints</span>
 	                        </h4>
 	                    </div>
-	                    <div id="collapseTwo-plan" class="panel-collapse collapse">
+	                    <div id="collapseTwo-complain" class="panel-collapse collapse">
 	                        <div class="panel-body">
 	                            <table class="table">
 	                                <tr>
@@ -113,7 +208,7 @@
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                        <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Take complaint'.html_safe, new_complaint_path %>
+	                                        <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
 	                                    </td>
 	                                </tr>
 	                                
@@ -122,12 +217,12 @@
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
-	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-plan" data-target="#collapseThree-plan">
+	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain" data-target="#collapseThree-complain">
 	                        <h4 class="panel-title">
 	                            <span><i class="fa fa-cubes" aria-hidden="true"></i> Plans  </span>
 	                        </h4>
 	                    </div>
-	                    <div id="collapseThree-plan" class="panel-collapse collapse in">
+	                    <div id="collapseThree-complain" class="panel-collapse collapse in">
 	                        <div class="panel-body">
 	                            <table class="table page-links">
 	                                <tr>
@@ -139,17 +234,18 @@
 	                                    <td>
 	                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Complaint'.html_safe, new_plan_path %>
 	                                    </td>
+	                                </tr>    
 	                            </table>
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
-	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-plan" data-target="#collapseFour-plan">
+	                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion-complain" data-target="#collapseFour-complain">
 	                        <h4 class="panel-title">
 	                            <span><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> Zones</span>
 	                        </h4>
 	                    </div>
-	                    <div id="collapseFour-plan" class="panel-collapse collapse">
+	                    <div id="collapseFour-complain" class="panel-collapse collapse">
 	                        <div class="panel-body">
 	                            <table class="table">
 	                                <tr>

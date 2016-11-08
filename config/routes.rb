@@ -25,8 +25,13 @@ Rails.application.routes.draw do
         get 'myrenewal'
      end
   end
-
+  get 'active_customers', to: "customers#active_customers"
+  get 'inactive_customers', to: "customers#inactive_customers"
+  get 'search_active_customers', to: "customers#search_active_customer"
+  get 'search_inactive_customers', to: "customers#search_inactive_customer"
   get 'search_customers', to: "customers#search"
+  get 'search_complaints', to: "customers#search_complaint"
+  
   get 'customer_activate/:id', to: "customers#activate"
   get 'search_employees', to: "employee_details#search"
   put 'active', to: "customers/active"
@@ -38,12 +43,27 @@ Rails.application.routes.draw do
   resources :complaints  do
      member do
         get 'resolve'
+        get 'create_custom'
         put 'success'
      end
   end
   
+  get 'open_complaint', to: "complaints#open_complaint"
+  get 'close_complaint', to: "complaints#close_complaint"
   get 'resolve/:id',   to: "complaints#resolve"
   put 'complaint_succcess', to: "complaints#success"
+  get 'newcomplaint', to: "complaints#assign_complaint"
+  get 'create/:id',   to: "complaints#create_custom"
+
+
+  resources :renewals do
+    member do
+        get 'renew'
+     end
+  end
+  get 'renew/:id',   to: "renewals#renew"
+  post 'new_renewal', to: "renewals#new_renewal"
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,8 @@
+<nav>
+  <ul class="dashbord-links">
+    <li><%=link_to '<i class="fa fa-home fa-lg" aria-hidden="true"></i> Primary Details'.html_safe, customer_path(@customer) %></li>
+    <li><%=link_to '<i class="fa fa-usd fa-lg" aria-hidden="true"></i> Payment Details'.html_safe, payment_detail_customer_path(@customer) %></li>
+    <li><%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renewals'.html_safe, myrenewal_customer_path(@customer) %></li>
+     <li><%=link_to '<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> See complaints'.html_safe, complaint_list_customer_path(@customer) %></li>
+  </ul>
+</nav>

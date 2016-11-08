@@ -1,9 +1,13 @@
+
+<%= render 'layouts/navbarcustomer' %>
 <div class="row" id="row-two">
   <div class="col-md-12 col-sm-12 col-xs-12">
-    <h3 class="page-heading"><i class="fa fa-money" aria-hidden="true"></i> Payment details</h3>
+    <%= render 'dashbord_links' %>
     <hr/>
   </div>
+
   <div class="col-lg-8 col-sm-12 col-xs-12">
+    <%= render 'expense_table' %>
     <h4 class="heading-h4"><strong>Plan details</strong></h4>
     <div class="custom-well col-md-12 col-sm-12 col-xs-12">
       <div class="col-md-4 col-sm-12 col-xs-12">
@@ -30,6 +34,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
+
         <br/>
         <h4 class="heading-h4"><strong>Total amount details</strong></h4>
       </div>
@@ -105,6 +110,7 @@
           <th>Bill Amount</th>
           <th>Bill paid by </th>
           <th>Pending Amount </th>
+          <th>Collected by</th>
         </tr>
         <% @customer.bill_books.each do |bill| %>
           <tr>
@@ -119,6 +125,11 @@
                 <% else %>
                   No Pending bill 
                 <% end %>
+              </td>
+              <td>
+                <% if bill.user %>
+                  <%= bill.user.name %> (<%= bill.user.emp_id %>)
+              <% end %>  
               </td>
           </tr>
         <% end %>

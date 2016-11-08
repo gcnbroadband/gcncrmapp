@@ -1,20 +1,16 @@
 <div class="wrapper">
   <div id="page-heading">
-    <h1><i class="fa fa-users" aria-hidden="true"></i> List of customers</h1>
+    <h1><span class="glyphicon glyphicon-th-list"></span> Take New Complaint</h1>
     <hr/>
   </div>  
     
     <nav class="navbar navbar-default customer-navbar">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li class="active"><%= link_to '<span class="glyphicon glyphicon-th-list"></span> List'.html_safe, root_path %></li>
-          <% if (current_user.marketing_executive == true )|| (current_user.gcn_admin == true)%>
-            <li><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add new'.html_safe, new_customer_path %></li>
-          <% end %>
-          <li class="hidden-xs">
-            <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew'.html_safe, new_renewal_path %>
+          <li><%=link_to '<span class="glyphicon glyphicon-th-list"></span> Complaints'.html_safe, complaints_path %></li>
+          <li class="active">
+            <%=link_to '<span class="glyphicon glyphicon-plus"></span> New complaint'.html_safe, newcomplaint_path %>
           </li>
-          <li><a id="search-item"><span class="glyphicon glyphicon-search"></span> Search</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right hidden-xs">
             <li class="dropdown">
@@ -30,5 +26,5 @@
         </ul>
       </div>
     </nav>
-    <%= render 'look_up' %>
+    <%= render 'complaint_lookup' %>
 </div>

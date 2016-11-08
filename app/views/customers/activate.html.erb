@@ -30,10 +30,9 @@
         </ul>
       </div>
     </nav>
-    <div class="row">
     	<div class="col-md-7">
     		<%= form_for @customer, method: :put, url: active_customer_path do |f| %>
-    			<div class="billing-addr">
+    			<div class="row billing-addr">
     				<div class="form-group col-md-4">
     					<%= f.label :cust_id, "User Id" %>
     					<%= f.text_field :cust_id, class: "form-control required", placeholder: "Enter user id" %>
@@ -86,5 +85,4 @@
     			</div>	
     		<% end %>
     	</div>
-    </div>
 </div>

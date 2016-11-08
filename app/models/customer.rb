@@ -20,6 +20,8 @@ class Customer < ActiveRecord::Base
   def self.find_by_zone_id(zoneid)
     where(zone_id: zoneid).all
   end
+
+  
   
   def self.search(param)
     return Customer.none if param.blank?

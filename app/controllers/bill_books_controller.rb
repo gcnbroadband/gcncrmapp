@@ -14,6 +14,7 @@ class BillBooksController < ApplicationController
   def create
     @bill = BillBook.new(bill_book_params)
     @bill.customer_id = params[:customer][:customer_id]
+    @bill.user = current_user
     @customer = Customer.find(@bill.customer_id)
     # @customer.renewals.each do |renew|
     #     if renew = @customer.renewals.last

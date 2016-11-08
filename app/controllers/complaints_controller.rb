@@ -1,21 +1,38 @@
 class ComplaintsController < ApplicationController
   layout 'compliant'
   def index
-    @complaint = Complaint.all
+    @complaints = Complaint.all
+  end
+  
+  def open_complaint
+    @complaints = Complaint.all
+  end
+
+  def close_complaint
+    @complaints = Complaint.all
   end
 
   def new
   	# @complaint = Complaint.new
   end
+  def assign_complaint
+    @customer = Customer.all
+  end
+  def create_custom
+     @complaint = Complaint.find(params[:id])
+     @customer =  Customer.find(params[:id])
+  end
 
   def create
-  	# render plain: params
-    @customer = Customer.find_by_userid(params[:custom_id])
+  	# render plain: params[:customer][:customer_id]
+    @customer = Customer.find(params[:customer][:customer_id])
+    # render json: @customer
     if @customer
       @complaint = Complaint.new(customer_id: @customer.id, complaint_sub: params[:complaint_sub], complaint_body: params[:complaint_body][0])
+      @complaint.user = current_user
       if @complaint.save
-        flash[:success] = "Complaint successfully raised"
-        redirect_to root_path
+        redirect_to complaints_path
+        flash[:success] = "Ticket no is - #{@complaint.ticket}"
       end
     else
       flash[:danger] = "User could not found"
@@ -25,23 +42,28 @@ class ComplaintsController < ApplicationController
  
   def resolve
     @complaint = Complaint.find(params[:id])
+    @emp = User.all
+    @users = User.find_all_technician()
   end
 
   def success
      # render plain: params_complaint
      @complaint = Complaint.find(params[:id])
-     @complaint.complaint_fixed_by = current_user.emp_id
+     @complaint.complaint_closed_by = current_user.id
+     # render json: @complaint
      @complaint.complaint_resolve = true
      if @complaint.update(params_complaint)
-      redirect_to root_path
+      redirect_to complaints_path
       flash[:success] = "Complaint successsfully fixed"
      else
+      render 'resolve'
       flash[:danger] = "Something went wrong"
      end
 
   end
 
   def show
+    @complaint = Complaint.find(params[:id])
   end
 
   private
