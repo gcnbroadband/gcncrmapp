@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110111047) do
+ActiveRecord::Schema.define(version: 20161111123303) do
 
   create_table "bill_books", force: true do |t|
     t.integer  "customer_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161110111047) do
     t.string   "cust_id"
     t.string   "activation_date"
     t.string   "server_name"
+    t.string   "app_id"
   end
 
   add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree

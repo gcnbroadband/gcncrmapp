@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :bill_books
   resources :renewals
   resources :plans
-
+  resources :users
   resources :zones
   resources :customers  do
      member do

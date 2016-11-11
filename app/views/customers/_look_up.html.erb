@@ -34,6 +34,7 @@
 			    <thead>
 			      <tr class="danger">
 			      	<th>Zone</th>
+			      	<th>Application Id</th>
 			      	<th>User Id</th>
 			        <th>Date</th>
 			        <th>name</th>
@@ -50,6 +51,7 @@
 			      <% @customer.each do |customer| %>
 			        <tr>
 			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
+			          <td><%= customer.app_id %></td>
 			          <td>
 			          	<% if (customer.cust_id.nil? || customer.cust_id.empty?) %>
 			          		<% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>

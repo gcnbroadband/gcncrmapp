@@ -14,6 +14,19 @@ class Customer < ActiveRecord::Base
   accepts_nested_attributes_for :payment_detail
 
 
+  # after_create do |complaint|
+  #    complaint.ticket = "gcn#{complaint.customer.zone.zone_name}#{complaint.customer_id}#{complaint.id}".upcase
+  #    complaint.save!
+  # end
+
+
+
+
+  after_create do |customer|
+     customer.app_id = "#{customer.zone.zone_code}"+ customer.id.to_s.rjust(7, "0")
+     customer.save!
+  end
+
   def self.find_by_userid(userid)
     where(cust_id: userid).first
   end
@@ -28,7 +41,11 @@ class Customer < ActiveRecord::Base
     param.strip!
     param.downcase!
 
-    (cust_id_matches(param) + name_matches(param) + email_matches(param) + mobile_no_matches(param) +telephone_no_matches(param)).uniq
+    (app_id_matches(param) + cust_id_matches(param) + name_matches(param) + email_matches(param) + mobile_no_matches(param) +telephone_no_matches(param)).uniq
+  end
+
+  def self.app_id_matches(param)
+    matches('app_id', param)
   end
 
   def self.cust_id_matches(param)

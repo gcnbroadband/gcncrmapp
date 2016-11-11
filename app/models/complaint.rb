@@ -9,7 +9,10 @@ class Complaint < ActiveRecord::Base
 	# end
 
 	after_create do |complaint|
-	   complaint.ticket = "RET" + complaint.id.to_s.rjust(5, "0")
+	   current = Time.now
+	   currentYear = current.year.to_s
+	   yearEnd = currentYear[2..3]
+	   complaint.ticket = "R#{yearEnd}#{current.month.to_s}" + complaint.id.to_s.rjust(7, "0")
 	   complaint.save!
 	end
 
