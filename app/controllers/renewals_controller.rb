@@ -4,7 +4,7 @@ class RenewalsController < ApplicationController
     end
 
     def new
-        if (current_user.tele_caller == true) || (current_user.gcn_admin == true)
+        if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true)
             @renew = Renewal.new
         else
             redirect_to root_path

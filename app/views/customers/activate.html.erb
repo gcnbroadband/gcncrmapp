@@ -14,7 +14,6 @@
           <li>
             <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew'.html_safe, new_renewal_path %>
           </li>
-          <li><a id="search-item"><span class="glyphicon glyphicon-search"></span> Search</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right hidden-xs">
             <li class="dropdown">
@@ -33,37 +32,43 @@
     	<div class="col-md-7">
     		<%= form_for @customer, method: :put, url: active_customer_path do |f| %>
     			<div class="row billing-addr">
-    				<div class="form-group col-md-4">
+    				<div class="form-group col-md-4 icon-view">
     					<%= f.label :cust_id, "User Id" %>
     					<%= f.text_field :cust_id, class: "form-control required", placeholder: "Enter user id" %>
+                        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
     				</div>
-    				<div class="form-group col-md-4">
+                    <div class="form-group col-md-4 icon-view">
+                        <%= f.label :server_name, "Select server" %>
+                        <%#= f.text_field :server_name, class: "form-control required", placeholder: "Enter user id" %>
+                        <%= f.collection_select(:server_name, Server.all, :name, :name, {prompt: 'Select server'},{class: "form-control required"}) %>
+                    </div>
+                    <div class="form-group col-md-4 icon-view">
+                        <%= f.label :activation_date ,'Activation date'%>
+                        <%= f.text_field :activation_date, class: "form-control required", placeholder: "Enter activation date" %>
+                        <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+                    </div>
+    				<div class="form-group col-md-12 icon-view">
     					<%= f.label :net_plan ,'Select Plan'%>
                         <%= f.collection_select(:net_plan, Plan.all, :plan_value, :plan_pattern,{prompt: 'Select plan'},{class: "form-control required"}) %>
     				</div>
-    				<div class="form-group col-md-4">
-    					<%= f.label :activation_date ,'Activation date'%>
-    					<%= f.text_field :activation_date, class: "form-control required", placeholder: "Enter activation date" %>
-    				</div>
-
-
+    				
     				<%= f.fields_for :payment_detail do |payment| %>
     			
-    				        <div class="col-md-4 col-xs-12">
+    				        <div class="col-md-4 col-xs-12 icon-view">
     				            <div class="form-group icon-view-rupee">
     				                <%= payment.label :plan_cost, "Plan Cost" %>
     				                <%= payment.text_field :plan_cost, class: "form-control required", placeholder: "Enter plan cost" , :readonly => true %>
     				                <i class="fa fa-inr fa-lg" aria-hidden="true"></i>
     				            </div>
     				        </div>
-    				        <div class="col-md-4 col-xs-12">
+    				        <div class="col-md-4 col-xs-12 icon-view">
     				            <div class="form-group icon-view-rupee">
     				                <%= payment.label :plan_tax, "Plan tax" %>
     				                <%= payment.text_field :plan_tax, class: "form-control required", placeholder: "Enter plan tax", :readonly => true %>
     				                <i class="fa fa-inr fa-lg" aria-hidden="true"></i>
     				            </div>
-    				        </div>
-    				        <div class="col-md-4 col-xs-12">
+    				        </div> 
+    				        <div class="col-md-4 col-xs-12 icon-view">
     				            <div class="form-group icon-view-rupee">
     				                <%= payment.label :monthly_payment_cost, "Monthly plan cost" %>
     				                <%= payment.text_field :monthly_payment_cost, class: "form-control required", placeholder: "Enter monthly payment cost", readonly: "true" %>

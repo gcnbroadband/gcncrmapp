@@ -75,19 +75,38 @@
           </tr>
           <tr>
             <td><b>Technician</b></td>
-            <td><%= @complaint.complaint_fixed_by %></td>
+            <td>
+              <% if @complaint.complaint_fixed_by.nil? %>
+                not closed yet.
+              <% else %>
+                <%= @complaint.complaint_fixed_by %>
+              <% end %>  
+            </td>
           </tr>
           <tr>
             <td><b>Closed by</b></td>
-            <% user = User.find(@complaint.complaint_closed_by) %>
-            <td>  
-              <% if user %>
-               <%= user.name %> (<%= user.emp_id %>)</td>
-              <% end %> 
+            <% if @complaint.complaint_closed_by.nil? %>
+              <td>  
+                  <% user = "not closed yet." %>
+                  <%= user %>
+              </td> 
+            <% else %>
+              <% user = User.find(@complaint.complaint_closed_by) %>
+              <td>  
+                 <%= user.name %> (<%= user.emp_id %>)
+              </td> 
+            <% end %>  
+
           </tr>
           <tr>
             <td><b>Closed date</b></td>
-            <td><%= @complaint.closed_date %></td>
+            <td>
+              <% if @complaint.closed_date.nil? %>
+                not closed yet.
+              <% else %>
+                <%= @complaint.closed_date %>
+              <% end %>  
+            </td>
           </tr>
         </table>
       </div>

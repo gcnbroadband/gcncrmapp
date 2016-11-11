@@ -5,7 +5,7 @@ class ZonesController < ApplicationController
   end
 
   def new
-    if current_user.gcn_admin == true
+    if (current_user.gcn_admin == true) || (current_user.branch_manager == true) 
   	   @zone = Zone.new
     else
       redirect_to root_path

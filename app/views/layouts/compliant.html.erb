@@ -55,16 +55,20 @@
                                     <%=link_to '<i class="fa fa-users" aria-hidden="true"></i> All Customers'.html_safe, root_path %>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add New Customer'.html_safe, new_customer_path %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew Customer'.html_safe, new_renewal_path %>
-                                </td>
-                            </tr>
+                            <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.marketing_team_lead == true) || (current_user.marketing_executive == true) %>
+	                            <tr>
+	                                <td>
+	                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add New Customer'.html_safe, new_customer_path %>
+	                                </td>
+	                            </tr>
+	                        <% end %>
+	                        <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+	                            <tr>
+	                                <td>
+	                                    <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew Customer'.html_safe, new_renewal_path %>
+	                                </td>
+	                            </tr>
+                            <% end %>
                         </table>
                     </div>
                 </div>
@@ -83,12 +87,13 @@
                                     <%=link_to '<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> All Complaints'.html_safe, complaints_path %>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
-                                </td>
-                            </tr>
-                            
+                            <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+	                            <tr>
+	                                <td>
+	                                    <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
+	                                </td>
+	                            </tr>
+                            <% end %>
                         </table>
                     </div>
                 </div>
@@ -107,11 +112,13 @@
                                     <%=link_to '<i class="fa fa-cubes" aria-hidden="true"></i> Plans'.html_safe, plans_path %>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Plan'.html_safe, new_plan_path %>
-                                </td>
-                            </tr>    
+                            <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) %>
+	                            <tr>
+	                                <td>
+	                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Plan'.html_safe, new_plan_path %>
+	                                </td>
+	                            </tr> 
+                            <% end %>  
                         </table>
                     </div>
                 </div>
@@ -130,11 +137,13 @@
                                     <%=link_to '<i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> All Zones'.html_safe, zones_path %>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Zone'.html_safe, new_zone_path %>
-                                </td>
-                            </tr>
+                            <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) %>
+	                            <tr>
+	                                <td>
+	                                    <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Zone'.html_safe, new_zone_path %>
+	                                </td>
+	                            </tr>
+                            <% end %>
                         </table>
                     </div>
                 </div>
@@ -181,16 +190,20 @@
 	                                        <%=link_to '<i class="fa fa-users" aria-hidden="true"></i> All Customers'.html_safe, root_path %>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add New Customer'.html_safe, new_customer_path %>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew Customer'.html_safe, new_renewal_path %>
-	                                    </td>
-	                                </tr>
+	                                <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.marketing_team_lead == true) || (current_user.marketing_executive == true) %>
+		                                <tr>
+		                                    <td>
+		                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add New Customer'.html_safe, new_customer_path %>
+		                                    </td>
+		                                </tr>
+	                                <% end %>
+	                                <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+		                                <tr>
+		                                    <td>
+		                                        <%=link_to '<i class="fa fa-magic fa-lg" aria-hidden="true"></i> Renew Customer'.html_safe, new_renewal_path %>
+		                                    </td>
+		                                </tr>
+	                                <% end %>
 	                            </table>
 	                        </div>
 	                    </div>
@@ -209,12 +222,13 @@
 	                                        <%=link_to '<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> All Complaints'.html_safe, complaints_path %>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
-	                                    </td>
-	                                </tr>
-	                                
+	                                <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+		                                <tr>
+		                                    <td>
+		                                        <%=link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>	 Take complaint'.html_safe, newcomplaint_path %>
+		                                    </td>
+		                                </tr>
+	                                <% end %>
 	                            </table>
 	                        </div>
 	                    </div>
@@ -233,11 +247,13 @@
 	                                        <%=link_to '<i class="fa fa-cubes" aria-hidden="true"></i> Plans'.html_safe, plans_path %>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Plan'.html_safe, new_plan_path %>
-	                                    </td>
-	                                </tr>    
+	                                <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) %>
+		                                <tr>
+		                                    <td>
+		                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Plan'.html_safe, new_plan_path %>
+		                                    </td>
+		                                </tr>  
+	                                <% end %>  
 	                            </table>
 	                        </div>
 	                    </div>
@@ -256,11 +272,13 @@
 	                                        <%=link_to '<i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> All Zones'.html_safe, zones_path %>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Zone'.html_safe, new_zone_path %>
-	                                    </td>
-	                                </tr>
+	                                <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) %>
+		                                <tr>
+		                                    <td>
+		                                        <%= link_to '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Zone'.html_safe, new_zone_path %>
+		                                    </td>
+		                                </tr>
+		                            <% end %>
 	                            </table>
 	                        </div>
 	                    </div>

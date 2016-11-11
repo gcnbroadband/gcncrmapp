@@ -8,7 +8,7 @@ class PlansController < ApplicationController
     end
 
     def new
-        if current_user.gcn_admin == true
+        if (current_user.gcn_admin == true) || (current_user.branch_manager == true)
             @plan = Plan.new
         else
             redirect_to root_path

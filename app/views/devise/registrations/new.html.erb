@@ -11,13 +11,15 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= devise_error_messages! %>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :name %>
                   <%= f.text_field :name, class: "form-control", placeholder: "Enter employee name" %>
+                  <i class="fa fa-user fa-lg" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :emp_id, "Employee Id" %>
                   <%= f.text_field :emp_id, class: "form-control", placeholder: "Enter employee id" %>
+                  <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="row">
@@ -31,84 +33,112 @@
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :emp_official_mobile_no, "Official Mobile No" %>
                   <%= f.text_field :emp_official_mobile_no, class: "form-control", placeholder: "Enter official mobile no" %>
+                  <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :email, "Official email Id" %>
                   <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%>
+                  <i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 icon-view">
                   <%= f.label :emp_local_addr, "Local Address" %>
-                  <%= f.text_field :emp_local_addr, class: "form-control", placeholder: "Enter local address" %>
+                  <%= f.text_area :emp_local_addr, class: "form-control", placeholder: "Enter local address" %>
+                  <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :emp_personal_mobile_no, "Personal Mobile No" %>
                   <%= f.text_field :emp_personal_mobile_no, class: "form-control", placeholder: "Enter personal mobile no" %>
+                  <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 icon-view">
                   <%= f.label :emp_personal_email, "Personal email Id" %>
                   <%= f.email_field :emp_personal_email, class: "form-control", placeholder: "Enter personal email" %>
+                  <i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 icon-view">
                   <%= f.label :emp_personal_address, "Permanent Address" %>
-                  <%= f.text_field :emp_personal_address, class: "form-control", placeholder: "Enter permanent address" %>
+                  <%= f.text_area :emp_personal_address, class: "form-control", placeholder: "Enter permanent address" %>
+                  <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4 icon-view">
                   <%= f.label :date_of_birth, "Date Of Birth" %>
                   <%= f.text_field :date_of_birth, class: "form-control", placeholder: "Enter date of birth" %>
+                  <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-3 icon-view">
                   <%= f.label :blood_group, "Blood Group" %>
                   <%= f.text_field :blood_group, class: "form-control", placeholder: "Enter blood group" %>
+                  <i class="fa fa-tint fa-lg" aria-hidden="true"></i>
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-5 icon-view">
                   <%= f.label :emergency_cotact_no, "Emergency Contact No" %>
-                  <%= f.text_field :emergency_cotact_no, class: "form-control", placeholder: "Enter personal email" %>
+                  <%= f.text_field :emergency_cotact_no, class: "form-control", placeholder: "Enter emergency contact no" %>
+                  <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
                 </div>
               </div>
-              <div class="form-group">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %>
-                <%= f.password_field :password, class: "form-control",placeholder: "Enter password" %>
-              </div>
+              <div class="row">
+                <div class="form-group col-md-12 icon-view">
+                  <%= f.label :password %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                  <%= f.password_field :password, class: "form-control",placeholder: "Enter password" %>
+                  <i class="fa fa-key fa-lg" aria-hidden="true"></i>
+                </div>
 
-              <div class="form-group">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "confirm password" %>
+                <div class="form-group col-md-12 icon-view">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "confirm password" %>
+                  <i class="fa fa-key fa-lg" aria-hidden="true"></i>
+                </div>
               </div>
               <p><b>Roles:</b></p>
               <div class="checkbox">
-                <label class="col-md-4 role-block">
-                  <input id="user_gcn_admin" name="user[gcn_admin]" type="checkbox" value="true" class="roles"> Admin
+                <label class="col-md-6 role-block">
+                  <input id="user_gcn_admin" name="user[gcn_admin]" type="checkbox" value="true"> Admin
                 </label>
               </div>
               <div class="checkbox">
-                <label class="col-md-4 role-block">
-                  <input id="user_team_lead" name="user[team_lead]" type="checkbox" value="true" class="roles"> Team Leader
+                <label class="col-md-6 role-block">
+                  <input id="user_branch_manager" name="user[branch_manager]" type="checkbox" value="true" class="roles"> Branch Manager
                 </label>
               </div>
               <div class="checkbox">
-                <label class="col-md-4 role-block">
-                  <input id="user_tele_caller" name="user[tele_caller]" type="checkbox" value="true" class="roles"> Telecaller
+                <label class="col-md-6 role-block">
+                  <input id="user_marketing_team_lead" name="user[marketing_team_lead]" type="checkbox" value="true" class="roles"> Marketing Team Leader
                 </label>
               </div>
               <div class="checkbox">
-                <label class="col-md-4">
+                <label class="col-md-6 role-block">
+                  <input id="user_tele_caller_team_lead" name="user[tele_caller_team_lead]" type="checkbox" value="true" class="roles"> Telecaller Team Leader
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="col-md-6 role-block">
+                  <input id="user_technical_team_lead" name="user[technical_team_lead]" type="checkbox" value="true" class="roles"> Technical Team Leader
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="col-md-6 role-block">
                   <input id="user_marketing_executive" name="user[marketing_executive]" type="checkbox" value="true" class="roles"> Marketing Executive
                 </label>
               </div>
               <div class="checkbox">
-                <label class="col-md-8">
+                <label class="col-md-6 role-block">
+                  <input id="user_tele_caller" name="user[tele_caller]" type="checkbox" value="true" class="roles"> Telecaller
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="col-md-6 role-block">
                   <input id="user_technician" name="user[technician]" type="checkbox" value="true" class="roles"> Technician
                 </label>
               </div>

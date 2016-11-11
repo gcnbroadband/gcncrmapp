@@ -36,7 +36,9 @@
 			        <th>Mobile no</th>
 			        <th>Email</th>
 			        <th>Telephone no</th>
-			        <th></th>
+			        <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+			        	<th></th>
+			        <% end %>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -61,7 +63,9 @@
 			      		  <td><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> <%= customer.billing_mobile_no %></td>
 			      		  <td><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= customer.billing_email %></td>
 			      		  <td><%= customer.billing_telephone_no %></td>
+			      		  <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
 			      		  <td><%=link_to '<i class="fa fa-bell-o" aria-hidden="true"></i> Raise complaint'.html_safe, create_custom_complaint_path(customer), class: "btn btn-xs btn-info btn-raised cust-see-detail-btn" %></td>
+			      		  <% end %>
 			      		</tr>
 			      	<% else %>
 			      		<% if customer.zone == current_user.zone %>

@@ -161,6 +161,12 @@ function tableHeight() {
 	    var finalTableHeight = winHeight-offsetHeight;
 		$(".resp-table").height(finalTableHeight-54);
 	}
+
+	var panel = $(".login-panel").height();
+	var winHeight =$(window).height();
+	var balenceHeight = winHeight - panel;
+	var topHeight = (balenceHeight-200)/2;
+	$(".login-panel").css("top", topHeight+"px");
 	
 }
 

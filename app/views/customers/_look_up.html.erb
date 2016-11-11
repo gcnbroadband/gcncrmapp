@@ -41,7 +41,9 @@
 			        <th>Email</th>
 			        <th>Telephone no</th>
 			        <th>Nationality</th>
-			        <th></th>
+			        <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+			        	<th></th>
+			        <% end %>	
                   </tr>
 			    </thead>
 			    <tbody>
@@ -50,7 +52,7 @@
 			          <td><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <%= customer.zone.zone_name %></td>
 			          <td>
 			          	<% if (customer.cust_id.nil? || customer.cust_id.empty?) %>
-			          		<% if (current_user.tele_caller == true) || (current_user.gcn_admin == true)%>
+			          		<% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
 			          			<%= link_to 'Activate',activate_customer_path(customer), class: "btn btn-xs btn-danger btn-raised cust-see-detail-btn" %>
 			          		<% else %>
 			          			<span style="color:red"><strong>Inactive</strong></span>
@@ -65,7 +67,13 @@
 			          <td><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= customer.billing_email %></td>
 			          <td><span class="glyphicon glyphicon-phone-alt"></span> <%= customer.billing_telephone_no %></td>
 			          <td><%= customer.nationality %></td>
-			          <td><%=link_to 'Renew', renew_renewal_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
+			          <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
+			          	<% if (customer.cust_id.nil? || customer.cust_id.empty?) %>
+			          		<td>Not Activated</td>
+			          	<% else %>
+			          		<td><%=link_to 'Renew', renew_renewal_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
+			          	<% end %>	
+			          <% end %>	
 			        </tr>
 			      <% end %>
 			    </tbody>

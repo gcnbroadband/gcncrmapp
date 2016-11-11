@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group col-md-12 col-xs-12 icon-view">
                           <%= label_tag(:renew_amount, "Renew Amount") %> <small>(15% tax included)</small>
-                          <%= text_field_tag :renew_amount, params[:renew_amount], placeholder: 'Enter renewal amount', class: 'form-control required' %>
+                          <%= text_field_tag :renew_amount, params[:renew_amount], placeholder: 'Enter renewal amount', class: 'form-control required', readonly: "true" %>
                           <i class="fa fa-inr fa-lg" aria-hidden="true"></i>
                         </div>
                         <div class="col-md-12 col-xs-12">

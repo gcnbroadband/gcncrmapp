@@ -8,9 +8,11 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="active"><%=link_to '<span class="glyphicon glyphicon-th-list"></span> Complaints'.html_safe, complaints_path %></li>
-          <li>
-            <%=link_to '<span class="glyphicon glyphicon-plus"></span> New complaint'.html_safe, newcomplaint_path %>
-          </li>
+          <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.technical_team_lead == true) || (current_user.tele_caller == true) %>
+            <li>
+              <%=link_to '<span class="glyphicon glyphicon-plus"></span> New complaint'.html_safe, newcomplaint_path %>
+            </li>
+          <% end %>
         </ul>
         
       </div>

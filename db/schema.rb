@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107081515) do
+ActiveRecord::Schema.define(version: 20161110111047) do
 
   create_table "bill_books", force: true do |t|
     t.integer  "customer_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20161107081515) do
     t.integer  "user_id"
     t.string   "cust_id"
     t.string   "activation_date"
+    t.string   "server_name"
   end
 
   add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
@@ -142,6 +143,12 @@ ActiveRecord::Schema.define(version: 20161107081515) do
 
   add_index "renewals", ["customer_id"], name: "index_renewals_on_customer_id", using: :btree
 
+  create_table "servers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -172,7 +179,10 @@ ActiveRecord::Schema.define(version: 20161107081515) do
     t.boolean  "marketing_executive",    default: false
     t.boolean  "tele_caller",            default: false
     t.boolean  "technician",             default: false
-    t.boolean  "team_lead",              default: false
+    t.boolean  "marketing_team_lead",    default: false
+    t.boolean  "technical_team_lead",    default: false
+    t.boolean  "branch_manager",         default: false
+    t.boolean  "tele_caller_team_lead",  default: false
   end
 
   add_index "users", ["designation_id"], name: "index_users_on_designation_id", using: :btree

@@ -16,10 +16,15 @@ class ComplaintsController < ApplicationController
   	# @complaint = Complaint.new
   end
   def assign_complaint
-    @customer = Customer.all
+    if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) 
+      @customer = Customer.all
+    else
+      redirect_to root_path
+      flash[:danger] = "Access denied"
+    end
   end
   def create_custom
-     @complaint = Complaint.find(params[:id])
+     # @complaint = Complaint.find(params[:id])
      @customer =  Customer.find(params[:id])
   end
 
@@ -41,9 +46,14 @@ class ComplaintsController < ApplicationController
   end
  
   def resolve
-    @complaint = Complaint.find(params[:id])
-    @emp = User.all
-    @users = User.find_all_technician()
+   if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true)
+      @complaint = Complaint.find(params[:id])
+      @emp = User.all
+      @users = User.find_all_technician()
+   else
+      redirect_to complaints_path 
+      flash[:danger] = "Access denied"
+   end  
   end
 
   def success

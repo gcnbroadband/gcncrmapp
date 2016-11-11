@@ -3,7 +3,7 @@
 		<li><%=link_to '<i class="fa fa-users" aria-hidden="true"></i> All'.html_safe, root_path %></li>
 		<li><%=link_to '<i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> Active'.html_safe, active_customers_path %></li>
 		<li><%=link_to '<i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> Inactive'.html_safe, inactive_customers_path %></li>
-		<span class="badge badge-customer-count hidden-xs"><small>Total <%= @customer.count %> customers</small></span>
+		<!-- <span class="badge badge-customer-count hidden-xs"><small>Total <%#= @customer.count %> customers</small></span> -->
 	</ul>
 	<hr/>
 </nav>
