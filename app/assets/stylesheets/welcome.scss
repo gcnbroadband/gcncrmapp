@@ -1242,9 +1242,7 @@ p.list-group-item-text {
     border: 1px solid #e4e3e3;
 
 }
-.mob-gap {
-    margin-top: 15px; 
-}
+
 .dashbord-links {
     margin-top: 20px; 
     li {
@@ -1297,7 +1295,12 @@ p.list-group-item-text {
 .login-checkbox input[type=checkbox]:checked + .checkbox-material .check:before, .checkbox-default input[type=checkbox]:checked + .checkbox-material .check:before {
     color: #4caf50 !important;
 }
-
+.complaint-customer-block {
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
 
 
 
@@ -1383,6 +1386,9 @@ p.list-group-item-text {
     .customer_links ul li a {
         padding: 10px 10px;
     }
+    .mob-gap {
+        margin-top: 15px; 
+    }
 }
 .mob-user-detail {
      p {
@@ -1398,4 +1404,7 @@ p.list-group-item-text {
         padding: 10px;
         font-size: 14px !important;
     }
+}
+.dashbord-links li a span {
+    color: #fff;
 }
