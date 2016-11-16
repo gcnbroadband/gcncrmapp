@@ -1,15 +1,15 @@
 class ComplaintsController < ApplicationController
   layout 'compliant'
   def index
-    @complaints = Complaint.all
+    @complaints = Complaint.order("id DESC")
   end
   
   def open_complaint
-    @complaints = Complaint.all
+    @complaints = Complaint.order("id DESC")
   end
 
   def close_complaint
-    @complaints = Complaint.all
+    @complaints = Complaint.order("id DESC")
   end
 
   def new

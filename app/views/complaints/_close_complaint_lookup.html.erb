@@ -9,6 +9,7 @@
 			<div class="table-responsive">
 				<table class="table table-striped table-centered table-bordered">
 					<tr>
+					    <td>sl no</td>
 						<th>Customer name</th>
 						<th>User Id</th>
 						<th>Subject</th>
@@ -20,6 +21,7 @@
 						<% if current_user.gcn_admin == true %>
 							<% if complaint.complaint_resolve == true %>
 							<tr>
+								<td><%= complaint.id %></td>
 								<td><%= complaint.customer.name %></td>
 								<td>
 									<% if (complaint.customer.cust_id.nil? || complaint.customer.cust_id.empty?) %>

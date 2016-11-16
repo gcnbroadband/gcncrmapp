@@ -45,6 +45,9 @@
 			        <% if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.tele_caller_team_lead == true) || (current_user.tele_caller == true) %>
 			        	<th></th>
 			        <% end %>	
+			        <% if (current_user.gcn_admin == true) %>
+			        	<th></th>
+			        <% end %>
                   </tr>
 			    </thead>
 			    <tbody>
@@ -76,6 +79,9 @@
 			          		<td><%=link_to 'Renew', renew_renewal_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
 			          	<% end %>	
 			          <% end %>	
+			          <% if (current_user.gcn_admin == true) %>
+			          	<td><%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-xs btn-success btn-raised cust-see-detail-btn" %></td>
+			          <% end %>
 			        </tr>
 			      <% end %>
 			    </tbody>

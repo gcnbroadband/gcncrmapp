@@ -11,6 +11,11 @@ class BillBooksController < ApplicationController
   def edit
   end
 
+  def import
+      BillBook.import(params[:file])
+      redirect_to root_url, notice: "plans imported."
+  end
+
   def create
     @bill = BillBook.new(bill_book_params)
     @bill.customer_id = params[:customer][:customer_id]

@@ -213,6 +213,13 @@
 	                                    </td>
 	                                </tr>
 	                                <% end %>
+	                                <% if (current_user.gcn_admin == true) %>
+		                                <tr>
+		                                	<td>
+		                                		<%= link_to '<i class="fa fa-paperclip fa-lg" aria-hidden="true"></i> Import'.html_safe, welcome_home_path %>
+		                                	</td>
+		                                </tr>
+		                            <% end %>
 	                            </table>
 	                        </div>
 	                    </div>

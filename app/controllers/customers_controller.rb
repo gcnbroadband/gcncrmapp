@@ -90,14 +90,14 @@ class CustomersController < ApplicationController
     if current_user.marketing_executive == true
       @customer = current_user.customers
     elsif current_user.gcn_admin == true 
-      @customer = Customer.all
+      @customer = Customer.order("id DESC")
     elsif (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.marketing_team_lead == true ) || (current_user.technical_team_lead) || (current_user.tele_caller_team_lead) || (current_user.tele_caller == true) || (current_user.technician == true)
       @customer = Customer.find_by_zone_id(current_user.zone_id)
     end
   end
   def complain
     @customer = Customer.find(params[:id])
-    @complaints = Complaint.all
+    @complaints = Complaint.order("id DESC")
   end
   def new
     if (current_user.gcn_admin == true) || (current_user.branch_manager == true) || (current_user.marketing_team_lead == true) || (current_user.marketing_executive == true)
@@ -142,9 +142,26 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    if (current_user.gcn_admin == true)
+      @customer = Customer.find(params[:id])
+    end
+  end
+
+  def update
+    if (current_user.gcn_admin == true)
+      @customer = Customer.update(customer_params)
+      redirect_to root_path
+    else
+      flash[:danger] = "Access denied"
+    end
   end
 
   def destroy
+  end
+
+  def import
+      Customer.import(params[:file])
+      redirect_to root_url, notice: "plans imported."
   end
 
   private

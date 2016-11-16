@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :registrations => "user/registrations" }
-  # get 'welcome/home'
+  get 'welcome/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -11,12 +11,27 @@ Rails.application.routes.draw do
   root 'customers#index'
   resources :customers
   resources :complaints
-  resources :bill_books
+
+  resources :bill_books do
+    collection { post :import }
+  end
+
   resources :renewals
-  resources :plans
+
+  resources :plans do
+    collection { post :import }
+  end
+ 
+  resources :payment_details do
+    collection { post :import }
+  end
+  
   resources :users
+
   resources :zones
+
   resources :customers  do
+     collection { post :import }
      member do
         get 'activate'
         put 'active'
@@ -25,6 +40,7 @@ Rails.application.routes.draw do
         get 'myrenewal'
      end
   end
+
   get 'active_customers', to: "customers#active_customers"
   get 'inactive_customers', to: "customers#inactive_customers"
   get 'search_active_customers', to: "customers#search_active_customer"

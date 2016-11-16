@@ -51,4 +51,10 @@
     <% else %>
       <small>No plans added yet.</small>
     <% end %>
+
+
+    <%= form_tag import_plans_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <p><%= submit_tag "Import", class: "btn btn-success" %></p>
+    <% end %>
 </div>
